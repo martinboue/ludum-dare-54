@@ -7,11 +7,36 @@
 radius = 0.25
 height = 1.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vw1uw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xxynr"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_l2hrv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l5o03"]
+transparency = 1
+albedo_color = Color(0.2, 0.294118, 1, 0.556863)
+
 [node name="Npc" type="Node3D"]
 script = ExtResource("1_ergnl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_j27rb")
+surface_material_override/0 = SubResource("StandardMaterial3D_vw1uw")
+
+[node name="SelectionArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SelectionArea"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_xxynr")
+
+[node name="SelectionHighLightMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_l2hrv")
+surface_material_override/0 = SubResource("StandardMaterial3D_l5o03")
+
+[connection signal="selection_changed" from="." to="." method="_on_selection_changed"]
+[connection signal="input_event" from="SelectionArea" to="." method="_on_selection_area_input_event"]
 
 [node name="Emote" parent="." instance=ExtResource("2_2rm4l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.958102, 0)
