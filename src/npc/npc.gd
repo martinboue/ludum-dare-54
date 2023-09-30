@@ -11,6 +11,7 @@ var is_selected = false
 
 func _ready() -> void:
 	$SelectionHighLightMesh.visible = false
+	$Emote.visible = false
 
 func _process(delta: float) -> void:
 	# Limiter les angles pour éviter les problèmes de dépassement
@@ -40,3 +41,4 @@ func _on_selection_area_input_event(camera, event, position, normal, shape_idx):
 
 func _on_selection_changed(is_selected):
 	$SelectionHighLightMesh.visible = is_selected
+	$Emote.visible = is_selected
