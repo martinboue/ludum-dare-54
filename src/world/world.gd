@@ -1,6 +1,6 @@
 extends Node3D
 
-var npc_scene := preload("res://src/npc/npc.tscn")
+var npc_scene := preload("res://src/npc/farmer/farmer.tscn")
 
 var rotating = false
 
@@ -40,7 +40,8 @@ func _move_and_zoom(delta):
 
 
 func _on_npc_spawn_timer_timeout():
-	var npc: Npc  = npc_scene.instantiate()
+	var npc: Npc = npc_scene.instantiate()
 	npc.put_at_random_position()
 	npc.add_to_group("npc")
 	add_child(npc)
+	ResourceManager.on_npc_spawn(npc)

@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://du03okn6rydtd"]
+[gd_scene load_steps=9 format=3 uid="uid://cq0qd50cav47m"]
 
 [ext_resource type="Script" path="res://src/world/world.gd" id="1_f4cc0"]
 [ext_resource type="PackedScene" uid="uid://txqxi183aoat" path="res://src/planet/planet.tscn" id="1_wckau"]
-[ext_resource type="PackedScene" uid="uid://b7iyujgn1fywb" path="res://src/npc/npc.tscn" id="2_8trg3"]
 [ext_resource type="Texture2D" uid="uid://1535qu40cbae" path="res://src/world/skybox.png" id="3_hlltp"]
+[ext_resource type="Script" path="res://src/world/sun.gd" id="4_8jy6o"]
 [ext_resource type="PackedScene" uid="uid://pg6d33c1tst0" path="res://src/hud/hud.tscn" id="5_wxly1"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_fwswi"]
@@ -23,9 +23,6 @@ script = ExtResource("1_f4cc0")
 
 [node name="Planet" parent="." instance=ExtResource("1_wckau")]
 
-[node name="Npc" parent="Planet" instance=ExtResource("2_8trg3")]
-transform = Transform3D(0.0167718, 0.999859, 0, -0.999859, 0.0167718, 0, 0, 0, 1, 15.5439, 0, 5.27553)
-
 [node name="NpcSpawnTimer" type="Timer" parent="Planet"]
 wait_time = 10.0
 autostart = true
@@ -38,8 +35,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 29.0357)
 top_level = true
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.441976, 0, 0.897027, 0, 1, 0, -0.897027, 0, 0.441976, 2.4599, 0, -138.438)
+script = ExtResource("4_8jy6o")
+
+[node name="Timer" type="Timer" parent="Sun"]
+wait_time = 3.0
+autostart = true
 
 [node name="HUD" parent="." instance=ExtResource("5_wxly1")]
 
 [connection signal="timeout" from="Planet/NpcSpawnTimer" to="." method="_on_npc_spawn_timer_timeout"]
+[connection signal="timeout" from="Sun/Timer" to="Sun" method="_on_timer_timeout"]

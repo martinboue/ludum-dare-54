@@ -15,6 +15,14 @@ run/main_scene="res://src/world/world.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ResourceManager="*res://src/resource_manager.gd"
+
+[filesystem]
+
+import/fbx/enabled=false
+
 [input]
 
 Rotate={

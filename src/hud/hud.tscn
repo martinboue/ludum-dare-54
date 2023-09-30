@@ -1,34 +1,36 @@
-[gd_scene load_steps=5 format=3 uid="uid://pg6d33c1tst0"]
+[gd_scene load_steps=6 format=3 uid="uid://pg6d33c1tst0"]
 
 [ext_resource type="Texture2D" uid="uid://cq222lqo36gph" path="res://src/hud/moon.png" id="1_gmwj7"]
 [ext_resource type="Texture2D" uid="uid://ubyr51ta5twb" path="res://src/hud/character.png" id="1_nhswv"]
+[ext_resource type="Script" path="res://src/hud/hud.gd" id="1_teluu"]
 [ext_resource type="Texture2D" uid="uid://bed1dx134ma6j" path="res://src/hud/resource_apple.png" id="2_uvh47"]
 [ext_resource type="Texture2D" uid="uid://0d0stq7cninn" path="res://src/hud/resource_iron.png" id="3_1por6"]
 
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_teluu")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+[node name="LeftContainer" type="VBoxContainer" parent="."]
 offset_left = 30.0
 offset_top = 30.0
 offset_right = 100.0
 offset_bottom = 618.0
 theme_override_constants/separation = 15
 
-[node name="Population" type="HBoxContainer" parent="VBoxContainer2"]
+[node name="Day" type="HBoxContainer" parent="LeftContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer2/Population"]
+[node name="TextureRect" type="TextureRect" parent="LeftContainer/Day"]
 layout_mode = 2
 texture = ExtResource("1_gmwj7")
 expand_mode = 3
 
-[node name="Label" type="Label" parent="VBoxContainer2/Population"]
+[node name="Label" type="Label" parent="LeftContainer/Day"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "3"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="RightContainer" type="VBoxContainer" parent="."]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -39,47 +41,47 @@ offset_bottom = 618.0
 grow_horizontal = 0
 theme_override_constants/separation = 15
 
-[node name="Population" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Population" type="HBoxContainer" parent="RightContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/Population"]
+[node name="Label" type="Label" parent="RightContainer/Population"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "12"
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Population"]
+[node name="TextureRect" type="TextureRect" parent="RightContainer/Population"]
 layout_mode = 2
 texture = ExtResource("1_nhswv")
 expand_mode = 3
 
-[node name="Food" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Food" type="HBoxContainer" parent="RightContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/Food"]
+[node name="Label" type="Label" parent="RightContainer/Food"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "256"
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Food"]
+[node name="TextureRect" type="TextureRect" parent="RightContainer/Food"]
 layout_mode = 2
 texture = ExtResource("2_uvh47")
 expand_mode = 3
 
-[node name="Iron" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Iron" type="HBoxContainer" parent="RightContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/Iron"]
+[node name="Label" type="Label" parent="RightContainer/Iron"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "50"
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Iron"]
+[node name="TextureRect" type="TextureRect" parent="RightContainer/Iron"]
 layout_mode = 2
 texture = ExtResource("3_1por6")
 expand_mode = 3
