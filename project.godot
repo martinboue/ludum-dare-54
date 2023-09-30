@@ -11,5 +11,6 @@ config_version=5
 [application]
 
 config/name="Ludum-dare-54"
+run/main_scene="res://src/world.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
