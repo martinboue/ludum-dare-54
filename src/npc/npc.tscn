@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7iyujgn1fywb"]
+[gd_scene load_steps=4 format=3 uid="uid://b7iyujgn1fywb"]
 
 [ext_resource type="Script" path="res://src/npc/npc.gd" id="1_ergnl"]
+[ext_resource type="PackedScene" uid="uid://c77wk1dvrw3ri" path="res://src/npc/emote/emote.tscn" id="2_2rm4l"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_j27rb"]
 radius = 0.25
@@ -11,3 +12,6 @@ script = ExtResource("1_ergnl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_j27rb")
+
+[node name="Emote" parent="." instance=ExtResource("2_2rm4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.958102, 0)
