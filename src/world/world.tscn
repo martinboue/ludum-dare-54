@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://du03okn6rydtd"]
+
+[ext_resource type="PackedScene" uid="uid://txqxi183aoat" path="res://src/planet/planet.tscn" id="1_wckau"]
+[ext_resource type="PackedScene" uid="uid://b7iyujgn1fywb" path="res://src/npc/npc.tscn" id="2_8trg3"]
+[ext_resource type="Texture2D" uid="uid://1535qu40cbae" path="res://src/world/skybox.png" id="3_hlltp"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_fwswi"]
+panorama = ExtResource("3_hlltp")
+
+[sub_resource type="Sky" id="Sky_bs6wp"]
+sky_material = SubResource("PanoramaSkyMaterial_fwswi")
+
+[sub_resource type="Environment" id="Environment_wrxnh"]
+background_mode = 2
+sky = SubResource("Sky_bs6wp")
+
+[node name="World" type="Node3D"]
+
+[node name="Planet" parent="." instance=ExtResource("1_wckau")]
+
+[node name="Npc" parent="Planet" instance=ExtResource("2_8trg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7557, 0, 5.27553)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wrxnh")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 48.9895)
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.441976, 0, 0.897027, 0, 1, 0, -0.897027, 0, 0.441976, 2.4599, 0, -138.438)
