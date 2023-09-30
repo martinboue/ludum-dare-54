@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://giw0enoeixhw"]
+
+[node name="Alien" type="Node3D"]
