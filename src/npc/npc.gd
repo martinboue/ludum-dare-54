@@ -10,6 +10,7 @@ var radius = 15.0  # Rayon de la sphère
 var is_selected = false
 
 func _ready() -> void:
+	randomize()
 	self.add_to_group("npc")
 	$SelectionHighLightMesh.visible = false
 	$Emote.visible = false

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://o1of7x2d5u4i"]
 
-[ext_resource type="PackedScene" uid="uid://dhhhk6bf5lsg8" path="res://src/planet/decorations/crater_large.glb" id="1_fxrpm"]
+[ext_resource type="PackedScene" uid="uid://b7xfhd68iawu0" path="res://src/planet/decorations/crater_large.glb" id="1_fxrpm"]
 
 [node name="crater_large" instance=ExtResource("1_fxrpm")]
 

@@ -6,6 +6,7 @@ var crater_scene := preload("res://src/planet/decorations/crater_large.tscn")
 var rocks_scene := preload("res://src/planet/decorations/rocks_small_a.tscn")
 
 func _ready() -> void:
+	randomize()
 	for n in 30:
 		var crater: Node3D = crater_scene.instantiate()
 		put_at_random_position(crater)

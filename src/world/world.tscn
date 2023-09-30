@@ -33,13 +33,14 @@ top_level = true
 [node name="Sun" type="DirectionalLight3D" parent="."]
 script = ExtResource("4_8jy6o")
 
-[node name="Timer" type="Timer" parent="Sun"]
-wait_time = 30.0
+[node name="DayTimer" type="Timer" parent="Sun"]
+wait_time = 15.0
 autostart = true
 
 [node name="HUD" parent="." instance=ExtResource("5_wxly1")]
 
-[connection signal="timeout" from="Sun/Timer" to="Sun" method="_on_timer_timeout"]
+[connection signal="timeout" from="Sun/DayTimer" to="Sun" method="_on_day_timer_timeout"]
+[connection signal="timeout" from="Sun/DayTimer" to="HUD/VesselPopup" method="_on_day_timer_timeout"]
 [connection signal="new_crew_accepted" from="HUD/VesselPopup" to="." method="_on_vessel_popup_new_crew_accepted"]
 
 [editable path="HUD"]
