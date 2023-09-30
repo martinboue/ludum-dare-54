@@ -1,37 +1,26 @@
-extends CharacterBody3D
+extends Node3D
 
-@onready var planet: Node3D = get_parent()
-@export var speed := 1 
+# Variables pour stocker la position sphérique du bonhomme
+var radius = 15.0  # Rayon de la sphère
+var polar_angle = 0.0  # Angle polaire (en radians)
+var azimuthal_angle = 0.0  # Angle azimutal (en radians)
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	# Movement
-	if Input.is_action_pressed("ui_up"):
-		velocity -= transform.basis.y * speed
-	if Input.is_action_pressed("ui_down"):
-		velocity += transform.basis.y * speed
-	if Input.is_action_pressed("ui_left"):
-		velocity += transform.basis.x * speed
-	if Input.is_action_pressed("ui_right"):
-		velocity -= transform.basis.x * speed
+	# Mettre à jour les angles en fonction des entrées utilisateur (ou d'autres sources)
+	polar_angle += (Input.get_action_strength("ui_up") - Input.get_action_strength("ui_down")) * 0.1
+	azimuthal_angle += (Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")) * 0.1
 
-	# Gravity to center of planet
-	if not is_on_floor():
-		velocity += get_gravity_dir_vector() * gravity * delta * 100
-	up_direction = get_gravity_dir_vector()
-	move_and_slide()
-	
-	# Keep NPC up relative to the ground
-	transform = transform.orthonormalized()
-	if transform.basis.y.normalized().cross(get_gravity_dir_vector()) != Vector3():
-		look_at(planet.global_transform.origin, transform.basis.y)
-	elif transform.basis.x.normalized().cross(get_gravity_dir_vector()) != Vector3():
-		look_at(planet.global_transform.origin, transform.basis.x)
-	
+	# Limiter les angles pour éviter les problèmes de dépassement
+	polar_angle = clamp(polar_angle, -PI/2, PI/2)
+	azimuthal_angle = fmod(azimuthal_angle, 2 * PI)
 
+	# Calculer la position sphérique en utilisant les angles
+	var x = radius * sin(polar_angle) * cos(azimuthal_angle)
+	var y = radius * sin(polar_angle) * sin(azimuthal_angle)
+	var z = radius * cos(polar_angle)
+
+	# Définir la position du bonhomme
+	transform.origin = Vector3(x, y, z)
 	
-func get_gravity_dir_vector():
-	return (planet.transform.origin - transform.origin).normalized()
+	# Rotation du bonhomme pour faire face au centre de la sphère
+	transform.basis = Basis(Vector3(0, 1, 0), Vector3(1, 0, 0), Vector3(0, 0, 1)).rotated(Vector3(1, 0, 0), -polar_angle).rotated(Vector3(0, 0, 1), azimuthal_angle - PI/2)

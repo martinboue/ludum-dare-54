@@ -5,8 +5,8 @@ var rotating = false
 var prev_mouse_position
 var next_mouse_position
 
-const zoom_inc = 1
-const rotation_sensibility = 0.5
+const zoom_inc = 10
+const rotation_sensibility = 0.1
 
 func _process(delta):
 	if (Input.is_action_just_pressed("Rotate")):
