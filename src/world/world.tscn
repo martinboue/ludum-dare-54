@@ -23,10 +23,6 @@ script = ExtResource("1_f4cc0")
 
 [node name="Planet" parent="." instance=ExtResource("1_wckau")]
 
-[node name="NpcSpawnTimer" type="Timer" parent="Planet"]
-wait_time = 10.0
-autostart = true
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_wrxnh")
 
@@ -43,7 +39,6 @@ autostart = true
 
 [node name="HUD" parent="." instance=ExtResource("5_wxly1")]
 
-[connection signal="timeout" from="Planet/NpcSpawnTimer" to="." method="_on_npc_spawn_timer_timeout"]
 [connection signal="timeout" from="Sun/Timer" to="Sun" method="_on_timer_timeout"]
 [connection signal="new_crew_accepted" from="HUD/VesselPopup" to="." method="_on_vessel_popup_new_crew_accepted"]
 

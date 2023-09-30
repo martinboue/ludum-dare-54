@@ -1,5 +1,7 @@
 extends Node3D
 
+@onready var world_envir = $WorldEnvironment
+
 var npc_scene := preload("res://src/npc/farmer/farmer.tscn")
 
 var rotating = false
@@ -24,6 +26,7 @@ func _move_and_zoom(delta):
 		next_mouse_position = get_viewport().get_mouse_position()
 		rotate_y((next_mouse_position.x - prev_mouse_position.x) * rotation_sensibility * delta)
 		rotate_x((next_mouse_position.y - prev_mouse_position.y) * rotation_sensibility * delta)
+		world_envir.environment.sky_rotation = rotation
 		
 		prev_mouse_position = next_mouse_position
 		

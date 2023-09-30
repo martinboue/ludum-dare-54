@@ -15,6 +15,9 @@ func produce_food():
 
 func consume_food():
 	food_count -= 1
+	
+func on_new_day():
+	day_count += 1
 
 func get_npc_count() -> int:
 	return npc_count
