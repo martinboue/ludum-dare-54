@@ -1,5 +1,7 @@
 extends Node3D
 
+var npc_scene := preload("res://src/npc/npc.tscn")
+
 var rotating = false
 
 var prev_mouse_position
@@ -9,6 +11,9 @@ const zoom_inc = 10
 const rotation_sensibility = 0.1
 
 func _process(delta):
+	_move_and_zoom(delta)
+
+func _move_and_zoom(delta):
 	if (Input.is_action_just_pressed("Rotate")):
 		rotating = true
 		prev_mouse_position = get_viewport().get_mouse_position()
@@ -32,3 +37,10 @@ func _process(delta):
 		
 	if new_camera_transform:
 		$Camera3D.transform = $Camera3D.transform.interpolate_with(new_camera_transform, 0.4)
+
+
+func _on_npc_spawn_timer_timeout():
+	var npc: Npc  = npc_scene.instantiate()
+	npc.put_at_random_position()
+	npc.add_to_group("npc")
+	add_child(npc)
