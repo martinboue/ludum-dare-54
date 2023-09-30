@@ -15,7 +15,6 @@ func _ready() -> void:
 		add_child(rocks)
 
 func put_at_random_position(deco: Node3D) -> void:
-	print(deco)
 	var polar_angle = randi_range(0, 2 * PI)
 	var azimuthal_angle = randi_range(0, 2 * PI)
 	

@@ -40,4 +40,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_tfadl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.958102, 0)
 
 [node name="FoodConsumer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
 script = ExtResource("3_i50gx")
