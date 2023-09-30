@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://ceqx1w12bpm72"]
+[gd_scene load_steps=9 format=3 uid="uid://ceqx1w12bpm72"]
 
 [ext_resource type="Script" path="res://src/npc/farmer/farmer.gd" id="1_jsgbj"]
 [ext_resource type="PackedScene" uid="uid://c77wk1dvrw3ri" path="res://src/npc/emote/emote.tscn" id="1_nhwfw"]
+[ext_resource type="Script" path="res://src/npc/food_consumer.gd" id="3_hqe4g"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_x57bh"]
 radius = 0.25
@@ -37,3 +38,14 @@ surface_material_override/0 = SubResource("StandardMaterial3D_c4my3")
 
 [node name="Emote" parent="." instance=ExtResource("1_nhwfw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.958102, 0)
+
+[node name="FoodProducter" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="FoodConsumer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+script = ExtResource("3_hqe4g")
+
+[connection signal="timeout" from="FoodProducter" to="." method="_on_food_producter_timeout"]

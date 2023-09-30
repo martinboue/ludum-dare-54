@@ -38,10 +38,9 @@ top_level = true
 script = ExtResource("4_8jy6o")
 
 [node name="Timer" type="Timer" parent="Sun"]
-wait_time = 3.0
+wait_time = 30.0
 autostart = true
 
 [node name="HUD" parent="." instance=ExtResource("5_wxly1")]
 
 [connection signal="timeout" from="Planet/NpcSpawnTimer" to="." method="_on_npc_spawn_timer_timeout"]
-[connection signal="timeout" from="Sun/Timer" to="Sun" method="_on_timer_timeout"]

@@ -10,6 +10,9 @@ var next_mouse_position
 const zoom_inc = 10
 const rotation_sensibility = 0.1
 
+func _ready() -> void:
+	_on_npc_spawn_timer_timeout()
+
 func _process(delta):
 	_move_and_zoom(delta)
 
