@@ -10,9 +10,6 @@ var next_mouse_position
 const zoom_inc = 10
 const rotation_sensibility = 0.1
 
-func _ready() -> void:
-	_on_npc_spawn_timer_timeout()
-
 func _process(delta):
 	_move_and_zoom(delta)
 
@@ -41,10 +38,8 @@ func _move_and_zoom(delta):
 	if new_camera_transform:
 		$Camera3D.transform = $Camera3D.transform.interpolate_with(new_camera_transform, 0.4)
 
-
-func _on_npc_spawn_timer_timeout():
-	var npc: Npc = npc_scene.instantiate()
-	npc.put_at_random_position()
-	npc.add_to_group("npc")
-	add_child(npc)
-	ResourceManager.on_npc_spawn(npc)
+func _on_vessel_popup_new_crew_accepted(crew):
+	for npc in crew:
+		$Planet.add_child(npc)
+		npc.put_at_random_position()
+		ResourceManager.on_npc_spawn(npc)

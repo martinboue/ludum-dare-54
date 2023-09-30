@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://pg6d33c1tst0"]
+[gd_scene load_steps=7 format=3 uid="uid://pg6d33c1tst0"]
 
 [ext_resource type="Texture2D" uid="uid://cq222lqo36gph" path="res://src/hud/moon.png" id="1_gmwj7"]
 [ext_resource type="Texture2D" uid="uid://ubyr51ta5twb" path="res://src/hud/character.png" id="1_nhswv"]
@@ -87,4 +87,4 @@ layout_mode = 2
 texture = ExtResource("3_1por6")
 expand_mode = 3
 
-[node name="Control" parent="." instance=ExtResource("5_kt654")]
+[node name="VesselPopup" parent="." instance=ExtResource("5_kt654")]

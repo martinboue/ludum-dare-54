@@ -44,3 +44,7 @@ autostart = true
 [node name="HUD" parent="." instance=ExtResource("5_wxly1")]
 
 [connection signal="timeout" from="Planet/NpcSpawnTimer" to="." method="_on_npc_spawn_timer_timeout"]
+[connection signal="timeout" from="Sun/Timer" to="Sun" method="_on_timer_timeout"]
+[connection signal="new_crew_accepted" from="HUD/VesselPopup" to="." method="_on_vessel_popup_new_crew_accepted"]
+
+[editable path="HUD"]

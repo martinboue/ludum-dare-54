@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dibbdptriudf0"]
 
 [ext_resource type="PackedScene" uid="uid://c77wk1dvrw3ri" path="res://src/npc/emote/emote.tscn" id="1_a0ew2"]
-[ext_resource type="Script" path="res://src/npc/npc.gd" id="1_w1502"]
+[ext_resource type="Script" path="res://src/npc/soldier/soldier.gd" id="1_yitv8"]
 [ext_resource type="Script" path="res://src/npc/food_consumer.gd" id="3_kbx5m"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_26oai"]
@@ -19,7 +19,7 @@ transparency = 1
 albedo_color = Color(0.2, 0.294118, 1, 0.556863)
 
 [node name="Soldier" type="Node3D"]
-script = ExtResource("1_w1502")
+script = ExtResource("1_yitv8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_26oai")
