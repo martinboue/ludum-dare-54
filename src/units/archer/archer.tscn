@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcs2ldo4irlkm"]
+[gd_scene load_steps=9 format=3 uid="uid://dcs2ldo4irlkm"]
 
 [ext_resource type="Script" path="res://src/units/archer/archer.gd" id="1_l4j4e"]
 [ext_resource type="Texture2D" uid="uid://bq8c7x01mchwk" path="res://src/units/archer/body.png" id="2_72vn3"]
 [ext_resource type="Script" path="res://src/utils/hurtbox/hurtbox.gd" id="3_5u37f"]
 [ext_resource type="Texture2D" uid="uid://5ctua252tcvj" path="res://src/units/archer/bow_loaded.png" id="4_rsngs"]
 [ext_resource type="Texture2D" uid="uid://dknkohkwmbvka" path="res://src/units/archer/hand.png" id="5_57qok"]
+[ext_resource type="PackedScene" uid="uid://bok711rv46li3" path="res://src/units/blood_splatter/blood_splatter.tscn" id="6_ekpf3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pq8fe"]
 size = Vector2(80, 80)
@@ -53,6 +54,10 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
 position = Vector2(0, -190)
 shape = SubResource("RectangleShape2D_ticjj")
+
+[node name="BloodSplatter" parent="." node_paths=PackedStringArray("hurtbox", "sprites") instance=ExtResource("6_ekpf3")]
+hurtbox = NodePath("../HurtBox")
+sprites = [NodePath("../BowSprite"), NodePath("../LeftHandSprite"), NodePath("../RightHandSprite"), NodePath("../BodySprite")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 

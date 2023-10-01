@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://clecguc2ldd6w"]
+[gd_scene load_steps=13 format=3 uid="uid://clecguc2ldd6w"]
 
 [ext_resource type="Script" path="res://src/units/enemies/enemy.gd" id="1_44ko7"]
 [ext_resource type="Texture2D" uid="uid://dicoeufg4jqbl" path="res://src/units/enemies/red_character.png" id="1_q2suu"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://src/utils/hurtbox/hurtbox.gd" id="4_o813y"]
 [ext_resource type="Texture2D" uid="uid://c51jf4ltb72wr" path="res://src/units/enemies/weapon_spear.png" id="4_pynig"]
 [ext_resource type="Texture2D" uid="uid://b3i1s5xur8imm" path="res://src/units/enemies/red_hand.png" id="5_c1v73"]
+[ext_resource type="PackedScene" uid="uid://bok711rv46li3" path="res://src/units/blood_splatter/blood_splatter.tscn" id="5_ivtk8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fo2v4"]
 size = Vector2(80, 80)
@@ -53,7 +54,7 @@ script = ExtResource("1_44ko7")
 hurtbox = NodePath("HurtBox")
 enemy_detector = NodePath("EnemyDetector")
 animation_player = NodePath("AnimationPlayer")
-direction = -1
+team = -1
 
 [node name="Body" type="Sprite2D" parent="."]
 texture = ExtResource("1_q2suu")
@@ -64,6 +65,10 @@ script = ExtResource("4_o813y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("RectangleShape2D_fo2v4")
+
+[node name="BloodSplatter" parent="." node_paths=PackedStringArray("hurtbox", "sprites") instance=ExtResource("5_ivtk8")]
+hurtbox = NodePath("../HurtBox")
+sprites = [NodePath("../Body"), NodePath("../Spare/Hand"), NodePath("../Spare")]
 
 [node name="Spare" type="Sprite2D" parent="."]
 show_behind_parent = true

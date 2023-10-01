@@ -12,13 +12,16 @@ func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	current_health = max_health
 
+func is_dead() -> bool:
+	return current_health <= 0
+
 func _on_area_entered(area: Area2D) -> void:
 	if not area is HitBox: 
 		return
 	var hitbox : HitBox = area
 	
 	current_health -= hitbox.damage
-	if current_health <= 0:
+	if is_dead():
 		died.emit()
 	
 	on_hurt.emit(hitbox)
