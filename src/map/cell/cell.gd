@@ -23,19 +23,12 @@ func _process(_delta: float) -> void:
 		label.text = str(floor(timer.time_left))
 
 func _on_enemy_detector_area_entered(area: Area2D) -> void:
-	start_timer(area, false)
-
-func _on_ally_detector_area_entered(area: Area2D) -> void:
-	start_timer(area, true)
-
-func start_timer(area: Area2D, friendly_area: bool):
-	if friendly != friendly_area and timer.is_stopped():
+	if friendly and timer.is_stopped() and area is HurtBox:
 		unit_count = 0
 		timer.start()
 		label.visible = true
-		if area is HurtBox:
-			unit_count += 1
-			area.died.connect(_on_unit_died)
+		unit_count += 1
+		area.died.connect(_on_unit_died)
 
 func _on_unit_died():
 	unit_count -= 1
@@ -44,8 +37,8 @@ func _on_unit_died():
 		label.visible = false
 
 func _on_timer_timeout() -> void:
-	friendly = !friendly
-	enemy_sprite.visible = !friendly
+	friendly = false
+	enemy_sprite.visible = true
 	label.visible = false
 	friendly_changed.emit(friendly)
 

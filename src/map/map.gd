@@ -61,3 +61,14 @@ func spawn_friendly_unit_at(unit_type, col, row) -> void:
 	unit.position.x = col * cell_width + cell_width / 2.0
 	unit.position.y = nb_row * cell_height
 	add_child(unit)
+	ScoreManager.on_ally_spawn(unit)
+
+func _on_ally_despawner_area_entered(area: Area2D) -> void:
+	if not area is HurtBox:
+		return
+	area.suicide()
+
+func _on_enemy_despawner_area_entered(area: Area2D) -> void:
+	if not area is HurtBox:
+		return
+	area.suicide()
