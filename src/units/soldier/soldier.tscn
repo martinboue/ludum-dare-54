@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://bjmp8o8soviwq"]
 
 [ext_resource type="Script" path="res://src/units/soldier/soldier.gd" id="1_co3hr"]
-[ext_resource type="Texture2D" uid="uid://dlxtd07g36aon" path="res://src/units/soldier/green_character.png" id="2_gvvn5"]
+[ext_resource type="Texture2D" uid="uid://xwrvpfwdjfh5" path="res://src/units/allies/green_character.png" id="2_3drj6"]
 [ext_resource type="Script" path="res://src/utils/hurtbox/hurtbox.gd" id="3_63shw"]
 [ext_resource type="Texture2D" uid="uid://dvncsglnslsqn" path="res://src/units/soldier/weapon_spear.png" id="5_bsmro"]
-[ext_resource type="Texture2D" uid="uid://uaytrxwa6bt1" path="res://src/units/soldier/green_hand.png" id="6_fj7r4"]
+[ext_resource type="Texture2D" uid="uid://ru53pclobukx" path="res://src/units/allies/green_hand.png" id="5_jkpfk"]
 [ext_resource type="Script" path="res://src/utils/hitbox/hitbox.gd" id="7_le755"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqw1d"]
@@ -59,7 +59,7 @@ team = null
 points = null
 
 [node name="Body" type="Sprite2D" parent="."]
-texture = ExtResource("2_gvvn5")
+texture = ExtResource("2_3drj6")
 
 [node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 2
@@ -76,7 +76,7 @@ rotation = -2.99786
 texture = ExtResource("5_bsmro")
 
 [node name="Hand" type="Sprite2D" parent="Spare"]
-texture = ExtResource("6_fj7r4")
+texture = ExtResource("5_jkpfk")
 
 [node name="HitBox" type="Area2D" parent="Spare"]
 position = Vector2(-1.00675, -52.6022)

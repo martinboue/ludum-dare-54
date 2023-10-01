@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8nso74vqmihn"
-path="res://.godot/imported/green_character.png-5fcade8b3d25e1566a9955018d30f591.ctex"
+uid="uid://xwrvpfwdjfh5"
+path="res://.godot/imported/green_character.png-85cbc8a01f74f863d5ec3d9ffee9faf0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/units/shielder/green_character.png"
-dest_files=["res://.godot/imported/green_character.png-5fcade8b3d25e1566a9955018d30f591.ctex"]
+source_file="res://src/units/allies/green_character.png"
+dest_files=["res://.godot/imported/green_character.png-85cbc8a01f74f863d5ec3d9ffee9faf0.ctex"]
 
 [params]
 

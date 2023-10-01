@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlxtd07g36aon"
-path="res://.godot/imported/green_character.png-e2874c06bf3468ad2739a1dbf21339e3.ctex"
+uid="uid://48rgf0hi8cq1"
+path="res://.godot/imported/bow_loaded.png-66746bea5829b5f202e8c51dfe5cd085.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/units/soldier/green_character.png"
-dest_files=["res://.godot/imported/green_character.png-e2874c06bf3468ad2739a1dbf21339e3.ctex"]
+source_file="res://src/units/enemies/archer/bow_loaded.png"
+dest_files=["res://.godot/imported/bow_loaded.png-66746bea5829b5f202e8c51dfe5cd085.ctex"]
 
 [params]
 

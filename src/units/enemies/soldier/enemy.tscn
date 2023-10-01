@@ -1,11 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://clecguc2ldd6w"]
+[gd_scene load_steps=12 format=3 uid="uid://dy73s0t7j258c"]
 
-[ext_resource type="Script" path="res://src/units/enemies/enemy.gd" id="1_44ko7"]
-[ext_resource type="Texture2D" uid="uid://dicoeufg4jqbl" path="res://src/units/enemies/red_character.png" id="1_q2suu"]
-[ext_resource type="Script" path="res://src/utils/hitbox/hitbox.gd" id="3_o2p7c"]
-[ext_resource type="Script" path="res://src/utils/hurtbox/hurtbox.gd" id="4_o813y"]
-[ext_resource type="Texture2D" uid="uid://c51jf4ltb72wr" path="res://src/units/enemies/weapon_spear.png" id="4_pynig"]
-[ext_resource type="Texture2D" uid="uid://b3i1s5xur8imm" path="res://src/units/enemies/red_hand.png" id="5_c1v73"]
+[ext_resource type="Script" path="res://src/units/enemies/soldier/enemy.gd" id="1_7wn1c"]
+[ext_resource type="Texture2D" uid="uid://dicoeufg4jqbl" path="res://src/units/enemies/red_character.png" id="2_4t1g0"]
+[ext_resource type="Script" path="res://src/utils/hurtbox/hurtbox.gd" id="3_sj65g"]
+[ext_resource type="Texture2D" uid="uid://c51jf4ltb72wr" path="res://src/units/enemies/soldier/weapon_spear.png" id="4_cyfta"]
+[ext_resource type="Texture2D" uid="uid://b3i1s5xur8imm" path="res://src/units/enemies/red_hand.png" id="5_pi68r"]
+[ext_resource type="Script" path="res://src/utils/hitbox/hitbox.gd" id="6_ldgyv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fo2v4"]
 size = Vector2(80, 80)
@@ -49,18 +49,18 @@ _data = {
 }
 
 [node name="Enemy" type="Node2D" node_paths=PackedStringArray("hurtbox", "enemy_detector", "animation_player")]
-script = ExtResource("1_44ko7")
+script = ExtResource("1_7wn1c")
 hurtbox = NodePath("HurtBox")
 enemy_detector = NodePath("EnemyDetector")
 animation_player = NodePath("AnimationPlayer")
 team = -1
 
 [node name="Body" type="Sprite2D" parent="."]
-texture = ExtResource("1_q2suu")
+texture = ExtResource("2_4t1g0")
 
 [node name="HurtBox" type="Area2D" parent="."]
 collision_mask = 8
-script = ExtResource("4_o813y")
+script = ExtResource("3_sj65g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("RectangleShape2D_fo2v4")
@@ -69,17 +69,17 @@ shape = SubResource("RectangleShape2D_fo2v4")
 show_behind_parent = true
 position = Vector2(12.25, 45)
 rotation = -2.99786
-texture = ExtResource("4_pynig")
+texture = ExtResource("4_cyfta")
 
 [node name="Hand" type="Sprite2D" parent="Spare"]
-texture = ExtResource("5_c1v73")
+texture = ExtResource("5_pi68r")
 
 [node name="HitBox" type="Area2D" parent="Spare"]
 position = Vector2(-1.00675, -52.6022)
 rotation = 2.95366
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("3_o2p7c")
+script = ExtResource("6_ldgyv")
 damage = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spare/HitBox"]

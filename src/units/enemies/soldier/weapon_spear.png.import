@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dknkohkwmbvka"
-path="res://.godot/imported/hand.png-ff5dfbd85dc2cc68ae6532de1257dfcf.ctex"
+uid="uid://c51jf4ltb72wr"
+path="res://.godot/imported/weapon_spear.png-b73b2bb3e451312d102553637c5f948c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/units/archer/hand.png"
-dest_files=["res://.godot/imported/hand.png-ff5dfbd85dc2cc68ae6532de1257dfcf.ctex"]
+source_file="res://src/units/enemies/soldier/weapon_spear.png"
+dest_files=["res://.godot/imported/weapon_spear.png-b73b2bb3e451312d102553637c5f948c.ctex"]
 
 [params]
 

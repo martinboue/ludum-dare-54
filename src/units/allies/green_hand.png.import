@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq8c7x01mchwk"
-path="res://.godot/imported/body.png-5550e6aa0bcbb7a48df8c139cce204df.ctex"
+uid="uid://ru53pclobukx"
+path="res://.godot/imported/green_hand.png-a9cc7e7d69252e3444143afa2561a13f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/units/archer/body.png"
-dest_files=["res://.godot/imported/body.png-5550e6aa0bcbb7a48df8c139cce204df.ctex"]
+source_file="res://src/units/allies/green_hand.png"
+dest_files=["res://.godot/imported/green_hand.png-a9cc7e7d69252e3444143afa2561a13f.ctex"]
 
 [params]
 
