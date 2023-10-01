@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0vj8vuc83lh7"]
+
+[ext_resource type="Texture2D" uid="uid://d0syvwkkqpy0x" path="res://src/units/defenses/wall/wall_trap.png" id="1_b8qnw"]
+[ext_resource type="Script" path="res://src/utils/hurtbox/hurtbox.gd" id="2_7pyye"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jit4w"]
+size = Vector2(120, 60)
+
+[node name="Wall" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -33)
+rotation = 3.14159
+texture = ExtResource("1_b8qnw")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("2_7pyye")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_jit4w")

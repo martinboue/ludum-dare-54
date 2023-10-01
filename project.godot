@@ -23,7 +23,10 @@ window/stretch/mode="canvas_items"
 
 [layer_names]
 
-2d_physics/layer_1="Units"
+2d_physics/layer_1="Enemy hurtbox"
+2d_physics/layer_2="Defense Hurtbox"
+2d_physics/layer_3="Enemy Hitbox"
+2d_physics/layer_4="Defense Hitbox"
 
 [rendering]
 
