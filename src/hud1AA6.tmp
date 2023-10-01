@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://5wxrk2uhicqd"]
+
+[ext_resource type="Script" path="res://src/hud.gd" id="1_qj2h8"]
+[ext_resource type="PackedScene" uid="uid://d4cr3cqb57b63" path="res://src/unit_picker.tscn" id="1_vqrfc"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_qj2h8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = -1
+anchor_top = 0.931
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.320068
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="DefenderUnit" parent="HBoxContainer" instance=ExtResource("1_vqrfc")]
+layout_mode = 2
+color = Color(0, 0, 1, 1)
+
+[node name="SoldierUnit" parent="HBoxContainer" instance=ExtResource("1_vqrfc")]
+layout_mode = 2
+color = Color(1, 0, 0, 1)
+value = 1
+
+[connection signal="selection_changed" from="HBoxContainer/DefenderUnit" to="." method="_on_defender_unit_selection_changed"]
+[connection signal="selection_changed" from="HBoxContainer/SoldierUnit" to="." method="_on_soldier_unit_selection_changed"]
