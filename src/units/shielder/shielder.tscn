@@ -1,16 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0vj8vuc83lh7"]
+[gd_scene load_steps=11 format=3 uid="uid://c0vj8vuc83lh7"]
 
-[ext_resource type="Script" path="res://src/units/unit.gd" id="1_ibo8v"]
+[ext_resource type="Script" path="res://src/units/shielder/shielder.gd" id="1_enrpn"]
 [ext_resource type="Script" path="res://src/utils/hurtbox/hurtbox.gd" id="3_2trqu"]
 [ext_resource type="Texture2D" uid="uid://c8nso74vqmihn" path="res://src/units/shielder/green_character.png" id="3_qihfv"]
 [ext_resource type="Texture2D" uid="uid://dsjolfdih043w" path="res://src/units/shielder/shield_curved.png" id="4_eqglj"]
 [ext_resource type="Texture2D" uid="uid://dh18kilqd1eoc" path="res://src/units/shielder/green_hand.png" id="5_017r5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jit4w"]
-size = Vector2(92, 28)
+size = Vector2(92, 61.1548)
 
 [sub_resource type="Animation" id="Animation_us0a0"]
-resource_name = "walking"
+resource_name = "idle"
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -37,18 +37,26 @@ tracks/1/keys = {
 "values": []
 }
 
+[sub_resource type="Animation" id="Animation_w1fcy"]
+resource_name = "attack"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_npj42"]
 _data = {
-"walking": SubResource("Animation_us0a0")
+"attack": SubResource("Animation_w1fcy"),
+"idle": SubResource("Animation_us0a0")
 }
 
-[node name="Shielder" type="Node2D" node_paths=PackedStringArray("hurtbox")]
-script = ExtResource("1_ibo8v")
-hurtbox = NodePath("Shield/HurtBox")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qnasi"]
+size = Vector2(89.5, 81)
+
+[node name="Shielder" type="Node2D" node_paths=PackedStringArray("hurtbox", "enemy_detector", "animation_player")]
+script = ExtResource("1_enrpn")
+hurtbox = NodePath("HurtBox")
+enemy_detector = NodePath("Shield/EnemyDetector")
+animation_player = NodePath("AnimationPlayer")
 
 [node name="Shield" type="Sprite2D" parent="."]
 position = Vector2(1, -56)
-rotation = 0.0872665
 scale = Vector2(0.851563, 0.851563)
 texture = ExtResource("4_eqglj")
 
@@ -56,22 +64,32 @@ texture = ExtResource("4_eqglj")
 position = Vector2(-2, 24)
 texture = ExtResource("5_017r5")
 
-[node name="HurtBox" type="Area2D" parent="Shield"]
+[node name="EnemyDetector" type="Area2D" parent="Shield"]
 position = Vector2(-1.17431, 73.9817)
 scale = Vector2(1.17431, 1.17431)
-collision_layer = 2
-collision_mask = 4
+collision_layer = 0
 script = ExtResource("3_2trqu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield/HurtBox"]
-position = Vector2(1, -67)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield/EnemyDetector"]
+position = Vector2(1, -83.5774)
 shape = SubResource("RectangleShape2D_jit4w")
 
 [node name="Body" type="Sprite2D" parent="."]
 texture = ExtResource("3_qihfv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "walking"
+autoplay = "idle"
 libraries = {
 "": SubResource("AnimationLibrary_npj42")
 }
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("3_2trqu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-1.75, 0.5)
+shape = SubResource("RectangleShape2D_qnasi")
+
+[connection signal="on_hurt" from="Shield/EnemyDetector" to="." method="_on_hurt_box_on_hurt"]

@@ -12,9 +12,11 @@ size = Vector2(80, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ticjj"]
 size = Vector2(80, 300)
 
-[node name="Archer" type="Node2D" node_paths=PackedStringArray("hurtbox")]
+[node name="Archer" type="Node2D" node_paths=PackedStringArray("hurtbox", "enemy_detector", "animation_player")]
 script = ExtResource("1_l4j4e")
 hurtbox = NodePath("HurtBox")
+enemy_detector = NodePath("EnemyDetector")
+animation_player = NodePath("AnimationPlayer")
 
 [node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 2
@@ -39,18 +41,21 @@ texture = ExtResource("5_57qok")
 [node name="BodySprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_72vn3")
 
-[node name="ShotCooldown" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
+[node name="ShootCooldown" type="Timer" parent="."]
 
 [node name="ArrowSpawner" type="Marker2D" parent="."]
 position = Vector2(0, -74)
 
 [node name="EnemyDetector" type="Area2D" parent="."]
+position = Vector2(0, -1)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
 position = Vector2(0, -190)
 shape = SubResource("RectangleShape2D_ticjj")
 
-[connection signal="timeout" from="ShotCooldown" to="." method="_on_shot_cooldown_timeout"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[connection signal="at_range" from="." to="." method="_on_archer_at_range"]
+[connection signal="not_at_range" from="." to="." method="_on_archer_not_at_range"]
+[connection signal="timeout" from="ShootCooldown" to="." method="_on_shot_cooldown_timeout"]
