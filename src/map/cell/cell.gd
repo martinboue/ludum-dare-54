@@ -3,6 +3,7 @@ extends Node2D
 
 @onready var timer = $Timer
 @onready var label = $Label
+@onready var enemy_sprite = $EnemySprite
 
 var friendly = true
 var cell_up: Cell
@@ -10,6 +11,7 @@ var cell_down: Cell
 
 func _ready() -> void:
 	label.visible = false
+	enemy_sprite.visible = false
 
 func _process(_delta: float) -> void:
 	if label.visible:
@@ -27,3 +29,6 @@ func _on_ally_detector_area_entered(area: Area2D) -> void:
 
 func _on_timer_timeout() -> void:
 	friendly = !friendly
+	enemy_sprite.visible = !friendly
+	label.visible = false
+	
