@@ -1,25 +1,77 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0vj8vuc83lh7"]
+[gd_scene load_steps=9 format=3 uid="uid://c0vj8vuc83lh7"]
 
 [ext_resource type="Script" path="res://src/units/unit.gd" id="1_ibo8v"]
-[ext_resource type="Texture2D" uid="uid://d0syvwkkqpy0x" path="res://src/units/shielder/wall_trap.png" id="2_h5i13"]
 [ext_resource type="Script" path="res://src/utils/hurtbox/hurtbox.gd" id="3_2trqu"]
+[ext_resource type="Texture2D" uid="uid://c8nso74vqmihn" path="res://src/units/shielder/green_character.png" id="3_qihfv"]
+[ext_resource type="Texture2D" uid="uid://dsjolfdih043w" path="res://src/units/shielder/shield_curved.png" id="4_eqglj"]
+[ext_resource type="Texture2D" uid="uid://dh18kilqd1eoc" path="res://src/units/shielder/green_hand.png" id="5_017r5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jit4w"]
-size = Vector2(120, 60)
+size = Vector2(92, 28)
+
+[sub_resource type="Animation" id="Animation_us0a0"]
+resource_name = "walking"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shield:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.174533, 0.174533]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shield:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_npj42"]
+_data = {
+"walking": SubResource("Animation_us0a0")
+}
 
 [node name="Shielder" type="Node2D" node_paths=PackedStringArray("hurtbox")]
 script = ExtResource("1_ibo8v")
-hurtbox = NodePath("HurtBox")
+hurtbox = NodePath("Shield/HurtBox")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -33)
-rotation = 3.14159
-texture = ExtResource("2_h5i13")
+[node name="Shield" type="Sprite2D" parent="."]
+position = Vector2(1, -56)
+rotation = 0.0872665
+scale = Vector2(0.851563, 0.851563)
+texture = ExtResource("4_eqglj")
 
-[node name="HurtBox" type="Area2D" parent="."]
+[node name="Hand" type="Sprite2D" parent="Shield"]
+position = Vector2(-2, 24)
+texture = ExtResource("5_017r5")
+
+[node name="HurtBox" type="Area2D" parent="Shield"]
+position = Vector2(-1.17431, 73.9817)
+scale = Vector2(1.17431, 1.17431)
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("3_2trqu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield/HurtBox"]
+position = Vector2(1, -67)
 shape = SubResource("RectangleShape2D_jit4w")
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("3_qihfv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "walking"
+libraries = {
+"": SubResource("AnimationLibrary_npj42")
+}
