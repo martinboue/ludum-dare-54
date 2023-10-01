@@ -10,7 +10,7 @@ var cell_scene = preload("res://src/map/cell/cell.tscn")
 var spawner_scene = preload("res://src/map/spawner/spawner.tscn")
 
 # Units scenes
-var wall_scene = preload("res://src/units/defenses/wall/wall.tscn")
+var wall_scene = preload("res://src/units/shielder/shielder.tscn")
 
 @onready var cell_width = tilemap.tile_set.tile_size.x
 @onready var cell_height = tilemap.tile_set.tile_size.y
