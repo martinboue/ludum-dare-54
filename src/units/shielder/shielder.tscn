@@ -43,8 +43,9 @@ _data = {
 "walking": SubResource("Animation_us0a0")
 }
 
-[node name="Shielder" type="Node2D"]
+[node name="Shielder" type="Node2D" node_paths=PackedStringArray("hurtbox")]
 script = ExtResource("1_ibo8v")
+hurtbox = NodePath("Shield/HurtBox")
 
 [node name="Shield" type="Sprite2D" parent="."]
 position = Vector2(1, -56)

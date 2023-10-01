@@ -13,8 +13,9 @@ size = Vector2(80, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ticjj"]
 size = Vector2(80, 300)
 
-[node name="Archer" type="Node2D"]
+[node name="Archer" type="Node2D" node_paths=PackedStringArray("hurtbox")]
 script = ExtResource("1_l4j4e")
+hurtbox = NodePath("HurtBox")
 
 [node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 2

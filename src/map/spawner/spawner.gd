@@ -9,3 +9,4 @@ func _on_spawn_cooldown_timeout() -> void:
 	var enemy = enemy_scene.instantiate()
 	get_parent().add_child(enemy)
 	enemy.position = position
+	ScoreManager.on_enemy_spawn(enemy)

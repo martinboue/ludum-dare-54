@@ -12,6 +12,7 @@ func _ready() -> void:
 	for c in unit_pickers:
 		if c is UnitPicker:
 			c.selection_changed.connect(_raise_unit_selection_changed)
+	ScoreManager.points_changed.connect(_on_points_changed)
 
 func _raise_unit_selection_changed(is_selected, value) -> void:
 	if is_selected:
@@ -30,3 +31,6 @@ func _on_map_defeat() -> void:
 
 func _on_defeat_restart() -> void:
 	restart.emit()
+
+func _on_points_changed(points: int):
+	$Points.text = str(points)

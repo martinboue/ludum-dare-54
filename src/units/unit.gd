@@ -6,8 +6,10 @@ enum Team {
 	ENEMY = -1
 }
 
+@export var hurtbox: HurtBox
 @export var speed := 100
 @export var team: Team = Team.ALLY
+@export var points := 10 
 
 var stop = false
 

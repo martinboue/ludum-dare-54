@@ -12,8 +12,9 @@ size = Vector2(80, 40)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fo2v4"]
 size = Vector2(80, 80)
 
-[node name="Enemy" type="Node2D"]
+[node name="Enemy" type="Node2D" node_paths=PackedStringArray("hurtbox")]
 script = ExtResource("1_44ko7")
+hurtbox = NodePath("HurtBox")
 team = -1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
