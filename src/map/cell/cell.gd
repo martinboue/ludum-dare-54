@@ -1,11 +1,15 @@
 class_name Cell
 extends Node2D
 
+signal clicked(col, row, friendly)
+signal friendly_changed(friendly: bool)
+
 @onready var timer = $Timer
 @onready var label = $Label
 @onready var enemy_sprite = $EnemySprite
 
-signal friendly_changed(friendly: bool)
+var col = null
+var row = null
 
 var friendly = true
 var cell_up: Cell
@@ -35,3 +39,13 @@ func _on_timer_timeout() -> void:
 	label.visible = false
 	friendly_changed.emit(friendly)
 	
+func _on_area_2d_area_entered(_area: Area2D) -> void:
+	timer.start()
+	label.visible = true
+
+func _on_selection_detector_input_event(viewport, event, shape_idx):
+	if not (event is InputEventMouseButton):
+		return
+
+	if event.pressed:
+		clicked.emit(col, row, friendly)

@@ -16,7 +16,7 @@ func _input(event):
 			if mouse_hover and not selected:
 				selected = true
 				selection_changed.emit(selected, value)
-			elif mouse_hover or selected:
+			elif mouse_hover and selected:
 				selected = false
 				selection_changed.emit(selected, value)
 	
