@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://5wxrk2uhicqd"]
+[gd_scene load_steps=4 format=3 uid="uid://5wxrk2uhicqd"]
 
 [ext_resource type="Script" path="res://src/hud.gd" id="1_qj2h8"]
 [ext_resource type="PackedScene" uid="uid://d4cr3cqb57b63" path="res://src/unit_picker.tscn" id="1_vqrfc"]
+[ext_resource type="PackedScene" uid="uid://hxlj6ss44p5n" path="res://src/hud/defeat/defeat.tscn" id="3_3uo3g"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_qj2h8")
@@ -28,5 +29,19 @@ layout_mode = 2
 color = Color(1, 0, 0, 1)
 value = 1
 
+[node name="Defeat" parent="." instance=ExtResource("3_3uo3g")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -60.5
+offset_right = 108.0
+offset_bottom = 60.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [connection signal="selection_changed" from="HBoxContainer/DefenderUnit" to="." method="_on_defender_unit_selection_changed"]
 [connection signal="selection_changed" from="HBoxContainer/SoldierUnit" to="." method="_on_soldier_unit_selection_changed"]
+[connection signal="restart" from="Defeat" to="." method="_on_defeat_restart"]

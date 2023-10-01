@@ -5,6 +5,8 @@ extends Node2D
 @onready var label = $Label
 @onready var enemy_sprite = $EnemySprite
 
+signal friendly_changed(friendly: bool)
+
 var friendly = true
 var cell_up: Cell
 var cell_down: Cell
@@ -31,4 +33,5 @@ func _on_timer_timeout() -> void:
 	friendly = !friendly
 	enemy_sprite.visible = !friendly
 	label.visible = false
+	friendly_changed.emit(friendly)
 	
