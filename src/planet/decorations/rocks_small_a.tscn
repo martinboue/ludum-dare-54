@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://eks7slhjgmnu"]
-
-[ext_resource type="PackedScene" uid="uid://dji77j18xp7qx" path="res://src/planet/decorations/rocks_small_a.glb" id="1_kbpal"]
-
-[node name="rocks_small_a" instance=ExtResource("1_kbpal")]
-
-[node name="rocks_smallA" parent="tmpParent" index="0"]
-transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0, 0)

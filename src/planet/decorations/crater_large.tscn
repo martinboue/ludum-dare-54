@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://o1of7x2d5u4i"]
-
-[ext_resource type="PackedScene" uid="uid://b7xfhd68iawu0" path="res://src/planet/decorations/crater_large.glb" id="1_fxrpm"]
-
-[node name="crater_large" instance=ExtResource("1_fxrpm")]
-
-[node name="craterLarge" parent="tmpParent" index="0"]
-transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0, 0)
