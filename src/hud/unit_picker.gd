@@ -9,14 +9,28 @@ var selected = false
 var mouse_hover = false
 
 @onready var border: ColorRect = $Border
+@onready var cooldown: Timer = $Cooldown
+@onready var cooldown_overlay: ColorRect = $CooldownOverlay
+
+func _ready() -> void:
+	ScoreManager.ally_spawned.connect(_on_ally_spawned)
+
+func _on_ally_spawned(spawned_value: int):
+	if spawned_value == value:
+		$Cooldown.start()
+		unselect()
 
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.pressed:
-			if mouse_hover and not selected:
+			if mouse_hover and not selected and $Cooldown.is_stopped():
 				select()
 			elif mouse_hover and selected:
 				unselect()
+
+func _process(delta: float) -> void:
+	cooldown_overlay.size.y = cooldown.time_left / cooldown.wait_time * size.y
+	cooldown_overlay.position.y = position.y + size.y - cooldown_overlay.size.y
 
 func select():
 	selected = true
@@ -24,7 +38,7 @@ func select():
 
 func unselect():
 	selected = false
-	selection_changed.emit(selected, value)	
+	selection_changed.emit(selected, value)
 
 func _on_mouse_entered():
 	mouse_hover = true
