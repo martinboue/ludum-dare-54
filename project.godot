@@ -21,6 +21,10 @@ window/size/viewport_width=480
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 
+[layer_names]
+
+2d_physics/layer_1="Units"
+
 [rendering]
 
 renderer/rendering_method="mobile"
