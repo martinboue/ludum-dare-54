@@ -55,7 +55,6 @@ hurtbox = NodePath("HurtBox")
 enemy_detector = NodePath("EnemyDetector")
 animation_player = NodePath("AnimationPlayer")
 speed = null
-team = null
 points = null
 
 [node name="Body" type="Sprite2D" parent="."]

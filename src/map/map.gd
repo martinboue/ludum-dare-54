@@ -55,13 +55,13 @@ func _on_cell_friendly_changed(friendly: bool):
 func _raise_cell_clicked(col, row, friendly) -> void:
 	cell_clicked.emit(col, row, friendly)
 	
-func spawn_friendly_unit_at(unit_type, col, row) -> void:
+func spawn_friendly_unit_at(unit_type: int, col, row) -> void:
 	# Todo handle unit type
 	var unit = unit_scenes[unit_type].instantiate()
 	unit.position.x = col * cell_width + cell_width / 2.0
 	unit.position.y = nb_row * cell_height
 	add_child(unit)
-	ScoreManager.on_ally_spawn(unit)
+	ScoreManager.on_ally_spawn(unit, unit_type)
 
 func _on_ally_despawner_area_entered(area: Area2D) -> void:
 	if not area is HurtBox:
