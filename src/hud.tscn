@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://5wxrk2uhicqd"]
+[gd_scene load_steps=7 format=3 uid="uid://5wxrk2uhicqd"]
 
 [ext_resource type="Script" path="res://src/hud.gd" id="1_qj2h8"]
 [ext_resource type="PackedScene" uid="uid://d4cr3cqb57b63" path="res://src/unit_picker.tscn" id="1_vqrfc"]
 [ext_resource type="PackedScene" uid="uid://hxlj6ss44p5n" path="res://src/hud/defeat/defeat.tscn" id="3_3uo3g"]
+[ext_resource type="Texture2D" uid="uid://dsjolfdih043w" path="res://src/units/shielder/shield_curved.png" id="3_x1hve"]
+[ext_resource type="Texture2D" uid="uid://dvncsglnslsqn" path="res://src/units/soldier/weapon_spear.png" id="4_gygad"]
+[ext_resource type="Texture2D" uid="uid://5ctua252tcvj" path="res://src/units/archer/bow_loaded.png" id="5_hh532"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_qj2h8")
@@ -22,15 +25,29 @@ metadata/_edit_use_anchors_ = true
 
 [node name="DefenderUnit" parent="HBoxContainer" instance=ExtResource("1_vqrfc")]
 layout_mode = 2
-color = Color(0, 0, 1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/DefenderUnit"]
+position = Vector2(50, 51)
+scale = Vector2(0.664063, 0.664063)
+texture = ExtResource("3_x1hve")
 
 [node name="SoldierUnit" parent="HBoxContainer" instance=ExtResource("1_vqrfc")]
 layout_mode = 2
-color = Color(1, 0, 0, 1)
 value = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/SoldierUnit"]
+position = Vector2(49, 50)
+scale = Vector2(0.6875, 0.6875)
+texture = ExtResource("4_gygad")
 
 [node name="ArcherUnit" parent="HBoxContainer" instance=ExtResource("1_vqrfc")]
 layout_mode = 2
+value = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/ArcherUnit"]
+position = Vector2(50, 50)
+scale = Vector2(0.691406, 0.691406)
+texture = ExtResource("5_hh532")
 
 [node name="Defeat" parent="." instance=ExtResource("3_3uo3g")]
 anchors_preset = 8

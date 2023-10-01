@@ -10,7 +10,11 @@ var cell_scene = preload("res://src/map/cell/cell.tscn")
 var spawner_scene = preload("res://src/map/spawner/spawner.tscn")
 
 # Units scenes
-var wall_scene = preload("res://src/units/shielder/shielder.tscn")
+var unit_scenes = [
+	preload("res://src/units/shielder/shielder.tscn"),
+	preload("res://src/units/shielder/shielder.tscn"),
+	preload("res://src/units/archer/archer.tscn")
+]
 
 @onready var cell_width = tilemap.tile_set.tile_size.x
 @onready var cell_height = tilemap.tile_set.tile_size.y
@@ -61,8 +65,7 @@ func _raise_cell_clicked(col, row, friendly) -> void:
 	
 func spawn_friendly_unit_at(unit_type, col, row) -> void:
 	# Todo handle unit type
-	var unit = null
-	unit = wall_scene.instantiate()
+	var unit = unit_scenes[unit_type].instantiate()
 	unit.position.x = col * cell_width + cell_width / 2.0
 	unit.position.y = nb_row * cell_height
 	add_child(unit)
