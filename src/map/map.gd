@@ -12,7 +12,7 @@ var spawner_scene = preload("res://src/map/spawner/spawner.tscn")
 # Units scenes
 var unit_scenes = [
 	preload("res://src/units/shielder/shielder.tscn"),
-	preload("res://src/units/shielder/shielder.tscn"),
+	preload("res://src/units/soldier/soldier.tscn"),
 	preload("res://src/units/archer/archer.tscn")
 ]
 

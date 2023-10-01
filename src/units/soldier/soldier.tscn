@@ -1,0 +1,100 @@
+[gd_scene load_steps=12 format=3 uid="uid://bgvfpfs8xatip"]
+
+[ext_resource type="Script" path="res://src/units/soldier/soldier.gd" id="1_co3hr"]
+[ext_resource type="Texture2D" uid="uid://dlxtd07g36aon" path="res://src/units/soldier/green_character.png" id="2_gvvn5"]
+[ext_resource type="Script" path="res://src/utils/hurtbox/hurtbox.gd" id="3_63shw"]
+[ext_resource type="Texture2D" uid="uid://dvncsglnslsqn" path="res://src/units/soldier/weapon_spear.png" id="5_bsmro"]
+[ext_resource type="Texture2D" uid="uid://uaytrxwa6bt1" path="res://src/units/soldier/green_hand.png" id="6_fj7r4"]
+[ext_resource type="Script" path="res://src/utils/hitbox/hitbox.gd" id="7_le755"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqw1d"]
+size = Vector2(80, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ad65v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7rr23"]
+size = Vector2(55, 40)
+
+[sub_resource type="Animation" id="Animation_1lhoo"]
+resource_name = "attack"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spare:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(16, 12), Vector2(16, 12), Vector2(16, 12), Vector2(11, 56)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spare:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-3.13952, -3.13952, -2.95064, -2.95064]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7mhn7"]
+_data = {
+"attack": SubResource("Animation_1lhoo")
+}
+
+[node name="Soldier" type="Node2D" node_paths=PackedStringArray("hurtbox", "enemy_detector", "animation_player")]
+rotation = 3.14159
+script = ExtResource("1_co3hr")
+hurtbox = NodePath("HurtBox")
+enemy_detector = NodePath("EnemyDetector")
+animation_player = NodePath("AnimationPlayer")
+speed = null
+team = null
+points = null
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("2_gvvn5")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("3_63shw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_aqw1d")
+
+[node name="Spare" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(12.25, 45)
+rotation = -2.99786
+texture = ExtResource("5_bsmro")
+
+[node name="Hand" type="Sprite2D" parent="Spare"]
+texture = ExtResource("6_fj7r4")
+
+[node name="HitBox" type="Area2D" parent="Spare"]
+position = Vector2(-1.00675, -52.6022)
+rotation = 2.95366
+collision_layer = 8
+script = ExtResource("7_le755")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spare/HitBox"]
+shape = SubResource("RectangleShape2D_ad65v")
+
+[node name="EnemyDetector" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
+position = Vector2(1, 98)
+shape = SubResource("RectangleShape2D_7rr23")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7mhn7")
+}
