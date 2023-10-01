@@ -14,12 +14,18 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.pressed:
 			if mouse_hover and not selected:
-				selected = true
-				selection_changed.emit(selected, value)
+				select()
 			elif mouse_hover and selected:
-				selected = false
-				selection_changed.emit(selected, value)
-	
+				unselect()
+
+func select():
+	selected = true
+	selection_changed.emit(selected, value)
+
+func unselect():
+	selected = false
+	selection_changed.emit(selected, value)	
+
 func _on_mouse_entered():
 	mouse_hover = true
 

@@ -29,6 +29,9 @@ layout_mode = 2
 color = Color(1, 0, 0, 1)
 value = 1
 
+[node name="ArcherUnit" parent="HBoxContainer" instance=ExtResource("1_vqrfc")]
+layout_mode = 2
+
 [node name="Defeat" parent="." instance=ExtResource("3_3uo3g")]
 anchors_preset = 8
 anchor_left = 0.5
