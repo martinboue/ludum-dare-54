@@ -12,8 +12,7 @@ var col = null
 var row = null
 
 var friendly = true
-var cell_up: Cell
-var cell_down: Cell
+var unit_count := 0 
 
 func _ready() -> void:
 	label.visible = false
@@ -24,24 +23,31 @@ func _process(_delta: float) -> void:
 		label.text = str(floor(timer.time_left))
 
 func _on_enemy_detector_area_entered(area: Area2D) -> void:
-	if friendly and timer.is_stopped():
-		timer.start()
-		label.visible = true
+	start_timer(area, false)
 
 func _on_ally_detector_area_entered(area: Area2D) -> void:
-	if not friendly and timer.is_stopped():
+	start_timer(area, true)
+
+func start_timer(area: Area2D, friendly_area: bool):
+	if friendly != friendly_area and timer.is_stopped():
+		unit_count = 0
 		timer.start()
 		label.visible = true
+		if area is HurtBox:
+			unit_count += 1
+			area.died.connect(_on_unit_died)
+
+func _on_unit_died():
+	unit_count -= 1
+	if unit_count == 0:
+		timer.stop()
+		label.visible = false
 
 func _on_timer_timeout() -> void:
 	friendly = !friendly
 	enemy_sprite.visible = !friendly
 	label.visible = false
 	friendly_changed.emit(friendly)
-	
-func _on_area_2d_area_entered(_area: Area2D) -> void:
-	timer.start()
-	label.visible = true
 
 func _on_selection_detector_input_event(viewport, event, shape_idx):
 	if not (event is InputEventMouseButton):
@@ -49,3 +55,5 @@ func _on_selection_detector_input_event(viewport, event, shape_idx):
 
 	if event.pressed:
 		clicked.emit(col, row, friendly)
+
+

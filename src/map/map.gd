@@ -26,9 +26,7 @@ var friendly_cells := 0
 
 func _ready() -> void:
 	# Generate cells on top of the map
-	var cell_up
 	for col in nb_col:
-		cell_up = null
 		for row in nb_row:
 			var cell: Cell = cell_scene.instantiate()
 			tilemap.add_child(cell)
@@ -36,12 +34,6 @@ func _ready() -> void:
 			cell.position.y = row * cell_height + cell_height / 2.0
 			cell.col = col
 			cell.row = row
-			
-			cell.cell_up = cell_up
-			if cell_up != null:
-				cell_up.cell_down = cell
-			
-			cell_up = cell
 			
 			cell.clicked.connect(_raise_cell_clicked)
 			cell.friendly_changed.connect(_on_cell_friendly_changed)
