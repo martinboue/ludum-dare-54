@@ -1,3 +1,56 @@
-[gd_scene format=3 uid="uid://dcs2ldo4irlkm"]
+[gd_scene load_steps=8 format=3 uid="uid://dcs2ldo4irlkm"]
 
-[node name="Archer" type="Node2D"]
+[ext_resource type="Script" path="res://src/units/archer/archer.gd" id="1_l4j4e"]
+[ext_resource type="Texture2D" uid="uid://bq8c7x01mchwk" path="res://src/units/archer/body.png" id="2_72vn3"]
+[ext_resource type="Script" path="res://src/utils/hurtbox/hurtbox.gd" id="3_5u37f"]
+[ext_resource type="Texture2D" uid="uid://5ctua252tcvj" path="res://src/units/archer/bow_loaded.png" id="4_rsngs"]
+[ext_resource type="Texture2D" uid="uid://dknkohkwmbvka" path="res://src/units/archer/hand.png" id="5_57qok"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pq8fe"]
+size = Vector2(80, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ticjj"]
+size = Vector2(80, 300)
+
+[node name="Archer" type="Node2D" node_paths=PackedStringArray("hurtbox")]
+script = ExtResource("1_l4j4e")
+hurtbox = NodePath("HurtBox")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("3_5u37f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_pq8fe")
+
+[node name="BowSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -75)
+texture = ExtResource("4_rsngs")
+
+[node name="LeftHandSprite" type="Sprite2D" parent="."]
+position = Vector2(-31, -74)
+texture = ExtResource("5_57qok")
+
+[node name="RightHandSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -36)
+texture = ExtResource("5_57qok")
+
+[node name="BodySprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_72vn3")
+
+[node name="ShotCooldown" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="ArrowSpawner" type="Marker2D" parent="."]
+position = Vector2(0, -74)
+
+[node name="EnemyDetector" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
+position = Vector2(0, -190)
+shape = SubResource("RectangleShape2D_ticjj")
+
+[connection signal="timeout" from="ShotCooldown" to="." method="_on_shot_cooldown_timeout"]

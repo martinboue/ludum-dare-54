@@ -7,8 +7,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jit4w"]
 size = Vector2(120, 60)
 
-[node name="Shielder" type="Node2D"]
+[node name="Shielder" type="Node2D" node_paths=PackedStringArray("hurtbox")]
 script = ExtResource("1_ibo8v")
+hurtbox = NodePath("HurtBox")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -33)

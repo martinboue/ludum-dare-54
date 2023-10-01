@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck7qrkvqh20rt"]
+
+[ext_resource type="Texture2D" uid="uid://3law0pnjyfkv" path="res://src/units/archer/arrow/arrow.png" id="1_55wr4"]
+[ext_resource type="Script" path="res://src/units/archer/arrow/arrow.gd" id="1_76v7y"]
+[ext_resource type="Script" path="res://src/utils/hitbox/hitbox.gd" id="2_y5u3q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fxl0p"]
+size = Vector2(26, 100)
+
+[node name="Arrow" type="Node2D"]
+script = ExtResource("1_76v7y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_55wr4")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 8
+script = ExtResource("2_y5u3q")
+damage = 50
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_fxl0p")
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
