@@ -80,6 +80,7 @@ rotation = 2.95366
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("3_o2p7c")
+damage = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spare/HitBox"]
 shape = SubResource("RectangleShape2D_70v4a")

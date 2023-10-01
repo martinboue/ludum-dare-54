@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bgvfpfs8xatip"]
+[gd_scene load_steps=12 format=3 uid="uid://bjmp8o8soviwq"]
 
 [ext_resource type="Script" path="res://src/units/soldier/soldier.gd" id="1_co3hr"]
 [ext_resource type="Texture2D" uid="uid://dlxtd07g36aon" path="res://src/units/soldier/green_character.png" id="2_gvvn5"]
@@ -83,6 +83,7 @@ position = Vector2(-1.00675, -52.6022)
 rotation = 2.95366
 collision_layer = 8
 script = ExtResource("7_le755")
+damage = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spare/HitBox"]
 shape = SubResource("RectangleShape2D_ad65v")

@@ -16,7 +16,7 @@ texture = ExtResource("1_55wr4")
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 8
 script = ExtResource("2_y5u3q")
-damage = 50
+damage = 40
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("RectangleShape2D_fxl0p")

@@ -28,13 +28,17 @@ func _on_enemy_detector_area_entered(area: Area2D) -> void:
 		timer.start()
 		label.visible = true
 		unit_count += 1
-		area.died.connect(_on_unit_died)
+		area.died.connect(_on_unit_died.bind(area))
 
-func _on_unit_died():
-	unit_count -= 1
-	if unit_count == 0:
+func _on_unit_died(hurtbox: HurtBox):
+	if hurtbox.is_dead():
+		unit_count -= 1
+		if unit_count == 0:
+			timer.stop()
+			label.visible = false
+	else:
 		timer.stop()
-		label.visible = false
+		_on_timer_timeout()
 
 func _on_timer_timeout() -> void:
 	friendly = false
