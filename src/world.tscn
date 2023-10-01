@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://5xxp6pditk76"]
+[gd_scene load_steps=5 format=3 uid="uid://5xxp6pditk76"]
 
 [ext_resource type="Script" path="res://src/world.gd" id="1_0r1rl"]
+[ext_resource type="PackedScene" uid="uid://5wxrk2uhicqd" path="res://src/hud.tscn" id="1_jnbij"]
 [ext_resource type="PackedScene" uid="uid://dv8et4lw8l01b" path="res://src/map/map.tscn" id="1_yghnl"]
 [ext_resource type="PackedScene" uid="uid://c0vj8vuc83lh7" path="res://src/units/defenses/wall/wall.tscn" id="2_7ll8k"]
-[ext_resource type="PackedScene" uid="uid://5wxrk2uhicqd" path="res://src/hud.tscn" id="1_jnbij"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_0r1rl")
