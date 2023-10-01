@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4cr3cqb57b63"]
+
+[ext_resource type="Script" path="res://src/unit_picker.gd" id="1_s5oal"]
+
+[node name="Control" type="ColorRect" groups=["unit_picker"]]
+custom_minimum_size = Vector2(50, 50)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -430.0
+offset_bottom = -670.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s5oal")
+
+[node name="Border" type="ColorRect" parent="."]
+visible = false
+show_behind_parent = true
+layout_mode = 0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 54.0
+offset_bottom = 54.0
+color = Color(0.0117647, 0.490196, 1, 1)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="selection_changed" from="." to="." method="_on_selection_changed"]
