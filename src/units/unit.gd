@@ -24,6 +24,7 @@ func _ready() -> void:
 	enemy_detector.area_entered.connect(_on_enemy_detector_area_entered)
 	enemy_detector.area_exited.connect(_on_enemy_detector_area_exited)
 	at_range.connect(_on_at_range)
+	not_at_range.connect(_on_not_at_range)	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
