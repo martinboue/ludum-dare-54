@@ -59,8 +59,10 @@ func _ready() -> void:
 
 func _on_cell_friendly_changed(friendly: bool):
 	friendly_cells += 1 if friendly else -1
+	$ClaimPlayer.play()
 	if friendly_cells == 0:
 		defeat.emit()
+		playing = false
 		
 func _raise_cell_clicked(col, row, friendly) -> void:
 	cell_clicked.emit(col, row, friendly)
@@ -86,6 +88,3 @@ func _on_enemy_despawner_area_entered(area: Area2D) -> void:
 	if not area is HurtBox:
 		return
 	area.suicide()
-
-func _on_hud_defeat() -> void:
-	playing = false

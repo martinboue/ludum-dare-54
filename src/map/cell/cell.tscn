@@ -13,6 +13,7 @@ size = Vector2(120, 120)
 script = ExtResource("1_yelak")
 
 [node name="EnemySprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.392157)
 texture = ExtResource("2_op40x")
 
 [node name="EnemyDetector" type="Area2D" parent="."]

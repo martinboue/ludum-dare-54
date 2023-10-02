@@ -31,6 +31,7 @@ func _on_unit_died(hurtbox: HurtBox):
 			enemy_sprite.visible = false
 	else:
 		friendly = false
+		enemy_sprite.modulate.a = 1
 		enemy_sprite.visible = true
 		friendly_changed.emit(friendly)
 
