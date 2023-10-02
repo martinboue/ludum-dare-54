@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dv8et4lw8l01b"]
+[gd_scene load_steps=8 format=3 uid="uid://dv8et4lw8l01b"]
 
 [ext_resource type="Script" path="res://src/map/map.gd" id="1_mpcqa"]
 [ext_resource type="Texture2D" uid="uid://0sf7afvfcet2" path="res://src/map/tiles.png" id="2_tdl4w"]
+[ext_resource type="FontFile" uid="uid://crd1t04wrdr0h" path="res://src/hud/font.ttf" id="4_36fc8"]
 [ext_resource type="Script" path="res://src/map/wave_builder.gd" id="4_akut7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qx4rk"]
@@ -79,6 +80,44 @@ script = ExtResource("4_akut7")
 [node name="WaveTimer" type="Timer" parent="WaveBuilder"]
 wait_time = 10.0
 autostart = true
+
+[node name="HelpContainer" type="VBoxContainer" parent="WaveBuilder"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -205.5
+offset_top = -216.0
+offset_right = 205.5
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CountDown" type="Label" parent="WaveBuilder/HelpContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.164706, 0.164706, 0.164706, 1)
+theme_override_fonts/font = ExtResource("4_36fc8")
+theme_override_font_sizes/font_size = 120
+text = "10"
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="WaveBuilder/HelpContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.164706, 0.164706, 0.164706, 1)
+theme_override_fonts/font = ExtResource("4_36fc8")
+theme_override_font_sizes/font_size = 60
+text = "Defend your side!"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="WaveBuilder/HelpContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.164706, 0.164706, 0.164706, 1)
+theme_override_fonts/font = ExtResource("4_36fc8")
+theme_override_font_sizes/font_size = 30
+text = "Place your units on a line to prevent
+ enemies from reaching your camp."
+horizontal_alignment = 1
 
 [connection signal="area_entered" from="AllyDespawner" to="." method="_on_ally_despawner_area_entered"]
 [connection signal="area_entered" from="EnemyDespawner" to="." method="_on_enemy_despawner_area_entered"]

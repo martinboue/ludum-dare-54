@@ -52,14 +52,22 @@ var level_configurations = [
 	}
 ]
 
+@onready var count_down = $HelpContainer/CountDown
+@onready var wave_timer = $WaveTimer
+
 var current_level = 0
 var points_per_level = 100
 
 func _ready():
 	ScoreManager.points_changed.connect(_on_points_changed)
-	
+
+func _process(delta: float) -> void:
+	count_down.text = str(floor(wave_timer.time_left))
+
 func _on_wave_timer_timeout():
-	randomize()	
+	$HelpContainer.visible = false
+	
+	randomize()
 	
 	# LevelConfiguration
 	var lc = level_configurations[current_level]

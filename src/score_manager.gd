@@ -16,9 +16,7 @@ func on_ally_spawn(ally: Unit, unit_value: int):
 func _on_enemy_died(enemy: Unit):
 	if enemy.hurtbox.is_dead():
 		points += enemy.points
-	else:
-		points -= enemy.points
-	points_changed.emit(points)
+		points_changed.emit(points)
 
 func _on_ally_died(ally: Unit):
 	if not ally.hurtbox.is_dead():
