@@ -19,20 +19,25 @@ var unit_scenes = [
 @onready var cell_width = tilemap.tile_set.tile_size.x
 @onready var cell_height = tilemap.tile_set.tile_size.y
 
-@onready var nb_col = tilemap.get_used_rect().end.x
-@onready var nb_row = tilemap.get_used_rect().end.y
+@onready var nb_col = tilemap.get_used_rect().end.x - tilemap.get_used_rect().position.x
+@onready var nb_row = tilemap.get_used_rect().end.y - tilemap.get_used_rect().position.y
 
 var friendly_cells := 0
 
 func _ready() -> void:
 	# Generate cells on top of the map
 	for col in nb_col:
+		# Do not generate cells or spawner on first and last column
+		if col == 0 or col == nb_col -1:
+			continue
+			
 		var cell: Cell = null
-		for row in nb_row:
+		# Do not generate cells on 2 last rows
+		for row in nb_row - 2:
 			cell = cell_scene.instantiate()
 			tilemap.add_child(cell)
-			cell.position.x = col * cell_width + cell_width / 2.0
-			cell.position.y = row * cell_height + cell_height / 2.0
+			cell.position.x = col * cell_width + cell_width / 2.0 + tilemap.get_used_rect().position.x * cell_width
+			cell.position.y = row * cell_height + cell_height / 2.0 + tilemap.get_used_rect().position.y * cell_height
 			cell.col = col
 			cell.row = row
 			
@@ -44,7 +49,7 @@ func _ready() -> void:
 		# Generate col spawner
 		var spawner: Spawner = spawner_scene.instantiate()
 		tilemap.add_child(spawner)
-		spawner.position.x = col * cell_width + cell_width / 2.0
+		spawner.position.x = cell.position.x
 		spawner.position.y = -cell_height
 		cell.friendly_changed.connect(spawner.on_end_cell_is_claimed)
 		$WaveBuilder.spawners.append(spawner)
