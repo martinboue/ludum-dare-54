@@ -61,7 +61,7 @@ var points_per_level = 100
 func _ready():
 	ScoreManager.points_changed.connect(_on_points_changed)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	count_down.text = str(floor(wave_timer.time_left))
 
 func _on_wave_timer_timeout():
@@ -85,5 +85,5 @@ func _on_wave_timer_timeout():
 			break
 
 func _on_points_changed(points: int) -> void:
-	current_level = int(floor(points / points_per_level))
+	current_level = int(floor(points / float(points_per_level)))
 	current_level = min(current_level, level_configurations.size() - 1)

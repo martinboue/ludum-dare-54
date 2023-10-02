@@ -52,7 +52,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qnasi"]
 size = Vector2(89.5, 81)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rd1j1"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gy7bx"]
 resource_local_to_scene = true
 bg_color = Color(0.215686, 0.85098, 0.54902, 1)
 
@@ -112,7 +112,7 @@ offset_right = 30.0
 offset_bottom = 59.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/fill = SubResource("StyleBoxFlat_rd1j1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gy7bx")
 
 [node name="SpawnPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_ph4ti")

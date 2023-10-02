@@ -6,7 +6,7 @@ extends Node2D
 func _process(delta: float) -> void:
 	position.y += speed * delta
 
-func _on_hit_box_area_entered(area: Area2D) -> void:
+func _on_hit_box_area_entered(_area: Area2D) -> void:
 	$HitBox.set_deferred("monitorable", false)
 	$HitBox.set_deferred("monitoring", false)
 	visible = false

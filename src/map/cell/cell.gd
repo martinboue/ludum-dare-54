@@ -34,7 +34,7 @@ func _on_unit_died(hurtbox: HurtBox):
 		enemy_sprite.visible = true
 		friendly_changed.emit(friendly)
 
-func _on_selection_detector_input_event(viewport, event, shape_idx):
+func _on_selection_detector_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseMotion:
 		hovered.emit(col, row, friendly)
 		return

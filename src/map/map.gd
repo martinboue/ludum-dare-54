@@ -67,11 +67,11 @@ func _raise_cell_clicked(col, row, friendly) -> void:
 func _raise_cell_hovered(col, row, friendly) -> void:
 	cell_hovered.emit(col, row, friendly)
 	
-func spawn_friendly_unit_at(unit_type: int, col, row) -> void:
+func spawn_friendly_unit_at(unit_type: int, col, _row) -> void:
 	# Todo handle unit type
 	var unit = unit_scenes[unit_type].instantiate()
 	unit.position.x = col * cell_width + cell_width / 2.0 + tilemap.get_used_rect().position.x * cell_width
-	unit.position.y = (nb_row - 2) * cell_height + cell_height / 2
+	unit.position.y = (nb_row - 2) * cell_height + cell_height / 2.0
 	tilemap.add_child(unit)
 	ScoreManager.on_ally_spawn(unit, unit_type)
 

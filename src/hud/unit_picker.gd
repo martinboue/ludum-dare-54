@@ -28,7 +28,7 @@ func _input(event):
 			elif mouse_hover and selected:
 				unselect()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	cooldown_overlay.size.y = cooldown.time_left / cooldown.wait_time * size.y
 	cooldown_overlay.position.y = position.y + size.y - cooldown_overlay.size.y
 
@@ -46,5 +46,5 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	mouse_hover = false
 
-func _on_selection_changed(is_selected, selected_value):
+func _on_selection_changed(is_selected, _selected_value):
 	border.visible = is_selected

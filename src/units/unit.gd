@@ -34,13 +34,13 @@ func _process(delta: float) -> void:
 	if not can_attack:
 		position.y -= speed * delta * team
 
-func _on_enemy_detector_area_entered(area: Area2D) -> void:
+func _on_enemy_detector_area_entered(_area: Area2D) -> void:
 	enemies_in_range += 1
 	if enemies_in_range > 0 and not can_attack:
 		can_attack = true
 		at_range.emit()
 
-func _on_enemy_detector_area_exited(area: Area2D) -> void:
+func _on_enemy_detector_area_exited(_area: Area2D) -> void:
 	enemies_in_range -= 1
 	if enemies_in_range <= 0 and can_attack:
 		can_attack = false		

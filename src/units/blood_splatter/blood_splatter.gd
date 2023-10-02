@@ -11,6 +11,6 @@ func _ready() -> void:
 	emitting = true
 	set_physics_process(true)
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if not emitting:
 		queue_free()
