@@ -6,11 +6,13 @@ extends Area2D
 var current_health: int
 
 signal on_hurt(hitbox: HitBox)
+signal health_changed(health: int)
 signal died()
 
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	current_health = max_health
+	health_changed.emit(current_health)
 
 func is_dead() -> bool:
 	return current_health <= 0
@@ -27,7 +29,7 @@ func _on_area_entered(area: Area2D) -> void:
 	if is_dead():
 		died.emit()
 	
-	on_hurt.emit(hitbox)
+	health_changed.emit(current_health)
 
 func suicide():
 	died.emit()

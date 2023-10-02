@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvgweqjkwkndx"]
+[gd_scene load_steps=9 format=3 uid="uid://dvgweqjkwkndx"]
 
 [ext_resource type="Script" path="res://src/units/enemies/archer/enemy_archer.gd" id="1_iep7t"]
 [ext_resource type="Script" path="res://src/utils/hurtbox/hurtbox.gd" id="2_txiid"]
 [ext_resource type="Texture2D" uid="uid://5ctua252tcvj" path="res://src/units/archer/bow_loaded.png" id="3_gn6a1"]
 [ext_resource type="Texture2D" uid="uid://b3i1s5xur8imm" path="res://src/units/enemies/red_hand.png" id="4_q0mge"]
 [ext_resource type="Texture2D" uid="uid://dicoeufg4jqbl" path="res://src/units/enemies/red_character.png" id="5_sidyy"]
+[ext_resource type="PackedScene" uid="uid://dfuxdtvgwrrn5" path="res://src/units/health_bar/health_bar.tscn" id="6_qd58a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1obax"]
 size = Vector2(80, 80)
@@ -58,3 +59,17 @@ position = Vector2(0, -190)
 shape = SubResource("RectangleShape2D_4hxnc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="HealthBar" parent="." instance=ExtResource("6_qd58a")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 30.0
+offset_top = 55.0
+offset_right = 90.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159

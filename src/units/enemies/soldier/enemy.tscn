@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dy73s0t7j258c"]
+[gd_scene load_steps=13 format=3 uid="uid://dy73s0t7j258c"]
 
 [ext_resource type="Script" path="res://src/units/enemies/soldier/enemy.gd" id="1_7wn1c"]
 [ext_resource type="Texture2D" uid="uid://dicoeufg4jqbl" path="res://src/units/enemies/red_character.png" id="2_4t1g0"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c51jf4ltb72wr" path="res://src/units/enemies/soldier/weapon_spear.png" id="4_cyfta"]
 [ext_resource type="Texture2D" uid="uid://b3i1s5xur8imm" path="res://src/units/enemies/red_hand.png" id="5_pi68r"]
 [ext_resource type="Script" path="res://src/utils/hitbox/hitbox.gd" id="6_ldgyv"]
+[ext_resource type="PackedScene" uid="uid://dfuxdtvgwrrn5" path="res://src/units/health_bar/health_bar.tscn" id="7_01b8v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fo2v4"]
 size = Vector2(80, 80)
@@ -97,3 +98,16 @@ shape = SubResource("RectangleShape2D_aufq5")
 libraries = {
 "": SubResource("AnimationLibrary_7mhn7")
 }
+
+[node name="HealthBar" parent="." instance=ExtResource("7_01b8v")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -55.0
+offset_right = 30.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 2
