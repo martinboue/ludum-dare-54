@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://5xxp6pditk76"]
+[gd_scene load_steps=5 format=3 uid="uid://5xxp6pditk76"]
 
 [ext_resource type="Script" path="res://src/world.gd" id="1_0r1rl"]
 [ext_resource type="PackedScene" uid="uid://5wxrk2uhicqd" path="res://src/hud/hud.tscn" id="1_jnbij"]
 [ext_resource type="PackedScene" uid="uid://dv8et4lw8l01b" path="res://src/map/map.tscn" id="1_yghnl"]
+[ext_resource type="Texture2D" uid="uid://d4nhgdovklsur" path="res://src/arrow_head.png" id="4_qeu2k"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_0r1rl")
@@ -11,6 +12,14 @@ script = ExtResource("1_0r1rl")
 
 [node name="HUD" parent="." instance=ExtResource("1_jnbij")]
 
+[node name="ColIndicator" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.215686, 0.85098, 0.54902, 0.498039)
+position = Vector2(102, 700)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_qeu2k")
+
 [connection signal="cell_clicked" from="Map" to="." method="_on_map_cell_clicked"]
+[connection signal="cell_hovered" from="Map" to="." method="_on_map_cell_hovered"]
 [connection signal="defeat" from="Map" to="HUD" method="_on_map_defeat"]
 [connection signal="unit_selection_changed" from="HUD" to="." method="_on_hud_unit_selection_changed"]
