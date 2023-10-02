@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bjmp8o8soviwq"]
+[gd_scene load_steps=15 format=3 uid="uid://bjmp8o8soviwq"]
 
 [ext_resource type="Script" path="res://src/units/soldier/soldier.gd" id="1_co3hr"]
 [ext_resource type="Texture2D" uid="uid://xwrvpfwdjfh5" path="res://src/units/allies/green_character.png" id="2_3drj6"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ru53pclobukx" path="res://src/units/allies/green_hand.png" id="5_jkpfk"]
 [ext_resource type="Script" path="res://src/utils/hitbox/hitbox.gd" id="7_le755"]
 [ext_resource type="PackedScene" uid="uid://dfuxdtvgwrrn5" path="res://src/units/health_bar/health_bar.tscn" id="7_qslwr"]
+[ext_resource type="AudioStream" uid="uid://chd7rvggump5t" path="res://src/units/allies/spawn.wav" id="8_5m3sx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqw1d"]
 size = Vector2(80, 80)
@@ -49,7 +50,7 @@ _data = {
 "attack": SubResource("Animation_1lhoo")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qgm8t"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ue4b"]
 resource_local_to_scene = true
 bg_color = Color(0.215686, 0.85098, 0.54902, 1)
 
@@ -117,4 +118,8 @@ offset_bottom = -51.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -3.14159
-theme_override_styles/fill = SubResource("StyleBoxFlat_qgm8t")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7ue4b")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_5m3sx")
+autoplay = true

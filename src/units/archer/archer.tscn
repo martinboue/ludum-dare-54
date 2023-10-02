@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dcs2ldo4irlkm"]
+[gd_scene load_steps=11 format=3 uid="uid://dcs2ldo4irlkm"]
 
 [ext_resource type="Script" path="res://src/units/archer/archer.gd" id="1_l4j4e"]
 [ext_resource type="Script" path="res://src/utils/hurtbox/hurtbox.gd" id="3_5u37f"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://5ctua252tcvj" path="res://src/units/archer/bow_loaded.png" id="4_rsngs"]
 [ext_resource type="Texture2D" uid="uid://xwrvpfwdjfh5" path="res://src/units/allies/green_character.png" id="5_j8qwg"]
 [ext_resource type="PackedScene" uid="uid://dfuxdtvgwrrn5" path="res://src/units/health_bar/health_bar.tscn" id="6_nw06v"]
+[ext_resource type="AudioStream" uid="uid://chd7rvggump5t" path="res://src/units/allies/spawn.wav" id="7_t7jyk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pq8fe"]
 size = Vector2(80, 80)
@@ -76,6 +77,10 @@ offset_bottom = 59.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_gdk5s")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_t7jyk")
+autoplay = true
 
 [connection signal="at_range" from="." to="." method="_on_archer_at_range"]
 [connection signal="not_at_range" from="." to="." method="_on_archer_not_at_range"]

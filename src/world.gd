@@ -5,6 +5,9 @@ var selected_unit = null
 @onready var indicator: Sprite2D = $ColIndicator
 @onready var indicator_width: float = indicator.texture.get_width() * indicator.scale.x
 
+func _ready() -> void:
+	ScoreManager.points = 0
+
 func _on_hud_unit_selection_changed(selected_unit):
 	self.selected_unit = selected_unit
 	if self.selected_unit == null:
