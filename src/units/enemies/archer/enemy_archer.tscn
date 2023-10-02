@@ -13,7 +13,7 @@ size = Vector2(80, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4hxnc"]
 size = Vector2(80, 300)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1d6pc"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i26ea"]
 resource_local_to_scene = true
 bg_color = Color(0.215686, 0.85098, 0.54902, 1)
 
@@ -50,7 +50,6 @@ texture = ExtResource("4_q0mge")
 texture = ExtResource("5_sidyy")
 
 [node name="ShootCooldown" type="Timer" parent="."]
-one_shot = true
 
 [node name="ArrowSpawner" type="Marker2D" parent="."]
 position = Vector2(0, -74)
@@ -79,7 +78,8 @@ offset_bottom = 59.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.14159
-theme_override_styles/fill = SubResource("StyleBoxFlat_1d6pc")
+theme_override_styles/fill = SubResource("StyleBoxFlat_i26ea")
 
 [connection signal="at_range" from="." to="." method="_on_archer_at_range"]
+[connection signal="not_at_range" from="." to="." method="_on_archer_not_at_range"]
 [connection signal="timeout" from="ShootCooldown" to="." method="_on_shot_cooldown_timeout"]
