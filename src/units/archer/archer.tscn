@@ -14,7 +14,7 @@ size = Vector2(80, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ticjj"]
 size = Vector2(80, 300)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gdk5s"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ojo3"]
 resource_local_to_scene = true
 bg_color = Color(0.215686, 0.85098, 0.54902, 1)
 
@@ -76,7 +76,7 @@ offset_right = 30.0
 offset_bottom = 59.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/fill = SubResource("StyleBoxFlat_gdk5s")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8ojo3")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_t7jyk")
