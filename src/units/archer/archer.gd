@@ -7,6 +7,7 @@ func shoot():
 	var arrow = arrow_scene.instantiate()
 	get_parent().add_child(arrow)
 	arrow.global_position = $ArrowSpawner.global_position
+	$ShootPlayer.play()
 
 func _on_shot_cooldown_timeout() -> void:
 	shoot()

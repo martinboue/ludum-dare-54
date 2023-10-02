@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dvgweqjkwkndx"]
+[gd_scene load_steps=11 format=3 uid="uid://dvgweqjkwkndx"]
 
 [ext_resource type="Script" path="res://src/units/enemies/archer/enemy_archer.gd" id="1_iep7t"]
 [ext_resource type="Script" path="res://src/utils/hurtbox/hurtbox.gd" id="2_txiid"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b3i1s5xur8imm" path="res://src/units/enemies/red_hand.png" id="4_q0mge"]
 [ext_resource type="Texture2D" uid="uid://dicoeufg4jqbl" path="res://src/units/enemies/red_character.png" id="5_sidyy"]
 [ext_resource type="PackedScene" uid="uid://dfuxdtvgwrrn5" path="res://src/units/health_bar/health_bar.tscn" id="6_qd58a"]
+[ext_resource type="AudioStream" uid="uid://dkudq6dyc7xpx" path="res://src/units/archer/shoot.ogg" id="7_va1fn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1obax"]
 size = Vector2(80, 80)
@@ -13,7 +14,7 @@ size = Vector2(80, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4hxnc"]
 size = Vector2(80, 300)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i26ea"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d3uhn"]
 resource_local_to_scene = true
 bg_color = Color(0.215686, 0.85098, 0.54902, 1)
 
@@ -78,7 +79,10 @@ offset_bottom = 59.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.14159
-theme_override_styles/fill = SubResource("StyleBoxFlat_i26ea")
+theme_override_styles/fill = SubResource("StyleBoxFlat_d3uhn")
+
+[node name="ShootPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_va1fn")
 
 [connection signal="at_range" from="." to="." method="_on_archer_at_range"]
 [connection signal="not_at_range" from="." to="." method="_on_archer_not_at_range"]

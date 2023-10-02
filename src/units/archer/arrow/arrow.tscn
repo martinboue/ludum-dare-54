@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ck7qrkvqh20rt"]
+[gd_scene load_steps=6 format=3 uid="uid://ck7qrkvqh20rt"]
 
 [ext_resource type="Texture2D" uid="uid://3law0pnjyfkv" path="res://src/units/archer/arrow/arrow.png" id="1_55wr4"]
 [ext_resource type="Script" path="res://src/units/archer/arrow/arrow.gd" id="1_76v7y"]
 [ext_resource type="Script" path="res://src/utils/hitbox/hitbox.gd" id="2_y5u3q"]
+[ext_resource type="AudioStream" uid="uid://ckajn6lytagwa" path="res://src/units/archer/arrow/arrow.mp3" id="4_6h1l1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fxl0p"]
 size = Vector2(26, 100)
@@ -20,6 +21,10 @@ damage = 40
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("RectangleShape2D_fxl0p")
+
+[node name="HitPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_6h1l1")
+volume_db = -5.0
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 

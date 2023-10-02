@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dcs2ldo4irlkm"]
+[gd_scene load_steps=12 format=3 uid="uid://dcs2ldo4irlkm"]
 
 [ext_resource type="Script" path="res://src/units/archer/archer.gd" id="1_l4j4e"]
 [ext_resource type="Script" path="res://src/utils/hurtbox/hurtbox.gd" id="3_5u37f"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://xwrvpfwdjfh5" path="res://src/units/allies/green_character.png" id="5_j8qwg"]
 [ext_resource type="PackedScene" uid="uid://dfuxdtvgwrrn5" path="res://src/units/health_bar/health_bar.tscn" id="6_nw06v"]
 [ext_resource type="AudioStream" uid="uid://chd7rvggump5t" path="res://src/units/allies/spawn.wav" id="7_t7jyk"]
+[ext_resource type="AudioStream" uid="uid://dkudq6dyc7xpx" path="res://src/units/archer/shoot.ogg" id="8_mnmh0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pq8fe"]
 size = Vector2(80, 80)
@@ -14,7 +15,7 @@ size = Vector2(80, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ticjj"]
 size = Vector2(80, 300)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ojo3"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cs3ik"]
 resource_local_to_scene = true
 bg_color = Color(0.215686, 0.85098, 0.54902, 1)
 
@@ -76,11 +77,14 @@ offset_right = 30.0
 offset_bottom = 59.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/fill = SubResource("StyleBoxFlat_8ojo3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cs3ik")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SpawnPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_t7jyk")
 autoplay = true
+
+[node name="ShootPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_mnmh0")
 
 [connection signal="at_range" from="." to="." method="_on_archer_at_range"]
 [connection signal="not_at_range" from="." to="." method="_on_archer_not_at_range"]

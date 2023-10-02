@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bjmp8o8soviwq"]
+[gd_scene load_steps=17 format=3 uid="uid://bjmp8o8soviwq"]
 
 [ext_resource type="Script" path="res://src/units/soldier/soldier.gd" id="1_co3hr"]
 [ext_resource type="Texture2D" uid="uid://xwrvpfwdjfh5" path="res://src/units/allies/green_character.png" id="2_3drj6"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://src/utils/hitbox/hitbox.gd" id="7_le755"]
 [ext_resource type="PackedScene" uid="uid://dfuxdtvgwrrn5" path="res://src/units/health_bar/health_bar.tscn" id="7_qslwr"]
 [ext_resource type="AudioStream" uid="uid://chd7rvggump5t" path="res://src/units/allies/spawn.wav" id="8_5m3sx"]
+[ext_resource type="AudioStream" uid="uid://turyvpiidyv6" path="res://src/units/soldier/attack.wav" id="9_j0cf1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqw1d"]
 size = Vector2(80, 80)
@@ -44,13 +45,41 @@ tracks/1/keys = {
 "update": 0,
 "values": [-3.13952, -3.13952, -2.95064, -2.95064]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AttackPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_5kjnt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackPlayer:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7mhn7"]
 _data = {
+"RESET": SubResource("Animation_5kjnt"),
 "attack": SubResource("Animation_1lhoo")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ue4b"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2rj1y"]
 resource_local_to_scene = true
 bg_color = Color(0.215686, 0.85098, 0.54902, 1)
 
@@ -118,8 +147,11 @@ offset_bottom = -51.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -3.14159
-theme_override_styles/fill = SubResource("StyleBoxFlat_7ue4b")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2rj1y")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SpawnPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_5m3sx")
 autoplay = true
+
+[node name="AttackPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_j0cf1")

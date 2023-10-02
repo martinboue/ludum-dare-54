@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bok711rv46li3"]
+[gd_scene load_steps=6 format=3 uid="uid://bok711rv46li3"]
 
 [ext_resource type="Texture2D" uid="uid://dunhoo3g0o368" path="res://src/units/blood_splatter/blood_ally.png" id="1_lfpmt"]
 [ext_resource type="Script" path="res://src/units/blood_splatter/blood_splatter.gd" id="2_e2kiu"]
+[ext_resource type="AudioStream" uid="uid://u11r0odnurx8" path="res://src/units/blood_splatter/die.mp3" id="3_dqo6t"]
 
 [sub_resource type="Curve" id="Curve_ec8k6"]
 min_value = -200.0
@@ -31,3 +32,8 @@ damping_max = 500.0
 scale_amount_min = 0.2
 color_ramp = SubResource("Gradient_v88lt")
 script = ExtResource("2_e2kiu")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dqo6t")
+volume_db = -15.0
+autoplay = true

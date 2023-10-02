@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c0vj8vuc83lh7"]
+[gd_scene load_steps=15 format=3 uid="uid://c0vj8vuc83lh7"]
 
 [ext_resource type="Script" path="res://src/units/shielder/shielder.gd" id="1_enrpn"]
 [ext_resource type="Script" path="res://src/utils/hurtbox/hurtbox.gd" id="3_2trqu"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://xwrvpfwdjfh5" path="res://src/units/allies/green_character.png" id="4_y6sih"]
 [ext_resource type="PackedScene" uid="uid://dfuxdtvgwrrn5" path="res://src/units/health_bar/health_bar.tscn" id="6_dmosp"]
 [ext_resource type="AudioStream" uid="uid://chd7rvggump5t" path="res://src/units/allies/spawn.wav" id="7_ph4ti"]
+[ext_resource type="AudioStream" uid="uid://bonqkgbx20th8" path="res://src/units/shielder/shield.mp3" id="8_ajwv8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jit4w"]
 size = Vector2(92, 61.1548)
@@ -51,7 +52,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qnasi"]
 size = Vector2(89.5, 81)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6o7f"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rd1j1"]
 resource_local_to_scene = true
 bg_color = Color(0.215686, 0.85098, 0.54902, 1)
 
@@ -111,8 +112,14 @@ offset_right = 30.0
 offset_bottom = 59.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/fill = SubResource("StyleBoxFlat_h6o7f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rd1j1")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SpawnPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_ph4ti")
 autoplay = true
+
+[node name="HitPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ajwv8")
+volume_db = -15.0
+
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
