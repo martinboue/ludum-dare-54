@@ -51,7 +51,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nmusl"]
 size = Vector2(89.5, 81)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wedul"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fqx23"]
 resource_local_to_scene = true
 bg_color = Color(0.215686, 0.85098, 0.54902, 1)
 
@@ -114,9 +114,10 @@ offset_bottom = 59.0002
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.14159
-theme_override_styles/fill = SubResource("StyleBoxFlat_wedul")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fqx23")
 
 [node name="HitPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_r26bd")
+volume_db = -15.0
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
