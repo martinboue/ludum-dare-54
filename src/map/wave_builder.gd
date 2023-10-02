@@ -14,54 +14,50 @@ var level_configurations = [
 		"enemy_count": 1,
 		"spawner_count": 1,
 		"enemy_types": [enemy_scenes[1]],
-		"score_to_reach": 0
 	},
 	{
 		"enemy_count": 2,
 		"spawner_count": 2,
 		"enemy_types": [enemy_scenes[1]],
-		"score_to_reach": 0
 	},
 	{
 		"enemy_count": 2,
 		"spawner_count": 2,
 		"enemy_types": [enemy_scenes[1], enemy_scenes[2]],
-		"score_to_reach": 0
 	},
 	{
 		"enemy_count": 3,
 		"spawner_count": 3,
 		"enemy_types": [enemy_scenes[1], enemy_scenes[2]],
-		"score_to_reach": 0
 	},
 	{
 		"enemy_count": 3,
 		"spawner_count": 3,
 		"enemy_types": [enemy_scenes[1], enemy_scenes[2], enemy_scenes[0]],
-		"score_to_reach": 0
 	},
 	{
 		"enemy_count": 4,
 		"spawner_count": 4,
 		"enemy_types": [enemy_scenes[1], enemy_scenes[2], enemy_scenes[0]],
-		"score_to_reach": 0
 	},
 	{
 		"enemy_count": 6,
 		"spawner_count": 4,
 		"enemy_types": [enemy_scenes[1], enemy_scenes[2], enemy_scenes[0]],
-		"score_to_reach": 0
 	},
 	{
 		"enemy_count": 8,
 		"spawner_count": 4,
 		"enemy_types": [enemy_scenes[1], enemy_scenes[2], enemy_scenes[0]],
-		"score_to_reach": 0
 	}
 ]
 
 var current_level = 0
+var points_per_level = 100
 
+func _ready():
+	ScoreManager.points_changed.connect(_on_points_changed)
+	
 func _on_wave_timer_timeout():
 	randomize()	
 	
@@ -80,6 +76,6 @@ func _on_wave_timer_timeout():
 		else:
 			break
 
-func _on_change_level_timer_timeout() -> void:
-	current_level += 1
-	current_level = max(current_level, level_configurations.size() - 1)
+func _on_points_changed(points: int) -> void:
+	current_level = int(floor(points / points_per_level))
+	current_level = min(current_level, level_configurations.size() - 1)
