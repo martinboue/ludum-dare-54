@@ -73,3 +73,7 @@ offset_bottom = 59.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.14159
+
+[connection signal="at_range" from="." to="." method="_on_archer_at_range"]
+[connection signal="not_at_range" from="." to="." method="_on_archer_not_at_range"]
+[connection signal="timeout" from="ShootCooldown" to="." method="_on_shot_cooldown_timeout"]
