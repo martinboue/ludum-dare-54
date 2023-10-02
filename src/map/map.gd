@@ -65,9 +65,9 @@ func _raise_cell_clicked(col, row, friendly) -> void:
 func spawn_friendly_unit_at(unit_type: int, col, row) -> void:
 	# Todo handle unit type
 	var unit = unit_scenes[unit_type].instantiate()
-	unit.position.x = col * cell_width + cell_width / 2.0
-	unit.position.y = nb_row * cell_height
-	add_child(unit)
+	unit.position.x = col * cell_width + cell_width / 2.0 + tilemap.get_used_rect().position.x * cell_width
+	unit.position.y = (nb_row - 2) * cell_height + cell_height / 2
+	tilemap.add_child(unit)
 	ScoreManager.on_ally_spawn(unit, unit_type)
 
 func _on_ally_despawner_area_entered(area: Area2D) -> void:
