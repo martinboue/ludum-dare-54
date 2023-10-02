@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvgweqjkwkndx"]
+[gd_scene load_steps=10 format=3 uid="uid://dvgweqjkwkndx"]
 
 [ext_resource type="Script" path="res://src/units/enemies/archer/enemy_archer.gd" id="1_iep7t"]
 [ext_resource type="Script" path="res://src/utils/hurtbox/hurtbox.gd" id="2_txiid"]
@@ -12,6 +12,10 @@ size = Vector2(80, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4hxnc"]
 size = Vector2(80, 300)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8w5gw"]
+resource_local_to_scene = true
+bg_color = Color(0.215686, 0.85098, 0.54902, 1)
 
 [node name="EnemyArcher" type="Node2D" node_paths=PackedStringArray("hurtbox", "enemy_detector", "animation_player")]
 rotation = 3.14159
@@ -73,6 +77,7 @@ offset_bottom = 59.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.14159
+theme_override_styles/fill = SubResource("StyleBoxFlat_8w5gw")
 
 [connection signal="at_range" from="." to="." method="_on_archer_at_range"]
 [connection signal="not_at_range" from="." to="." method="_on_archer_not_at_range"]

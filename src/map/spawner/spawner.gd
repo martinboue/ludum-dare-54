@@ -1,4 +1,4 @@
-# Spawner
+class_name Spawner
 extends Marker2D
 
 var enemy_scenes = [
@@ -7,10 +7,14 @@ var enemy_scenes = [
 	preload("res://src/units/enemies/shielder/enemy_shielder.tscn")
 ]
 
+var is_active = true
+var col = null
+var row = null
+
 func _ready() -> void:
 	randomize()
 
-func _on_spawn_cooldown_timeout() -> void:
+func spawn_enemy() -> void:
 	var enemy = _get_random_enemy().instantiate()
 	get_parent().add_child(enemy)
 	enemy.position = position
@@ -19,3 +23,6 @@ func _on_spawn_cooldown_timeout() -> void:
 func _get_random_enemy() -> PackedScene:
 	# Todo weight and enemies pattern
 	return enemy_scenes.pick_random()
+	
+func on_end_cell_is_claimed(friendly: bool) -> void:
+	self.is_active = friendly
