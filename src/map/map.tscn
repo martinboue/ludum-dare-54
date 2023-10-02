@@ -1,13 +1,39 @@
 [gd_scene load_steps=8 format=3 uid="uid://dv8et4lw8l01b"]
 
 [ext_resource type="Script" path="res://src/map/map.gd" id="1_mpcqa"]
-[ext_resource type="Texture2D" uid="uid://co4p55spy3d48" path="res://src/map/cell/enemy_cell.png" id="2_7f7w8"]
 [ext_resource type="Texture2D" uid="uid://ceml4sj83rolb" path="res://src/map/scribbleDungeons_tiles.svg" id="2_m3eul"]
+[ext_resource type="Texture2D" uid="uid://0sf7afvfcet2" path="res://src/map/tiles.png" id="2_tdl4w"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_alfh4"]
-texture = ExtResource("2_7f7w8")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qx4rk"]
+texture = ExtResource("2_tdl4w")
 texture_region_size = Vector2i(128, 128)
+0:0/next_alternative_id = 4
 0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+1:0/0 = 0
+2:0/0 = 0
+3:0/next_alternative_id = 5
+3:0/0 = 0
+4:0/next_alternative_id = 5
+4:0/0 = 0
+4:0/4 = 4
+4:0/4/flip_h = true
+5:0/0 = 0
+6:0/next_alternative_id = 3
+6:0/0 = 0
+6:0/1 = 1
+6:0/1/flip_h = true
+7:0/0 = 0
+8:0/next_alternative_id = 2
+8:0/0 = 0
+8:0/1 = 1
+8:0/1/flip_h = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ebx5w"]
 texture = ExtResource("2_m3eul")
@@ -78,7 +104,7 @@ texture_region_size = Vector2i(128, 128)
 [sub_resource type="TileSet" id="TileSet_eo76h"]
 tile_size = Vector2i(120, 120)
 sources/2 = SubResource("TileSetAtlasSource_ebx5w")
-sources/0 = SubResource("TileSetAtlasSource_alfh4")
+sources/1 = SubResource("TileSetAtlasSource_qx4rk")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_irhkd"]
 size = Vector2(480, 30)
@@ -87,16 +113,17 @@ size = Vector2(480, 30)
 script = ExtResource("1_mpcqa")
 
 [node name="TileMap" type="TileMap" parent="."]
+position = Vector2(40, 0)
 tile_set = SubResource("TileSet_eo76h")
 format = 2
-layer_0/tile_data = PackedInt32Array(327680, 458754, 0, 327681, 458754, 0, 327682, 458754, 0, 327683, 458754, 0, 262144, 458754, 0, 262145, 458754, 0, 262146, 458754, 0, 262147, 458754, 0, 196611, 458754, 0, 131075, 458754, 0, 65539, 458754, 0, 3, 458754, 0, 2, 458754, 0, 1, 458754, 0, 0, 458754, 0, 65536, 458754, 0, 131072, 458754, 0, 196608, 458754, 0, 196609, 458754, 0, 131073, 458754, 0, 65537, 458754, 0, 65538, 458754, 0, 131074, 458754, 0, 196610, 458754, 0)
+layer_0/tile_data = PackedInt32Array(0, 1, 0, 1, 1, 65536, 2, 1, 0, 65538, 1, 65536, 65539, 1, 131072, 131075, 1, 131072, 131074, 1, 0, 3, 1, 0, 65537, 1, 131072, 65536, 1, 131072, 131072, 1, 131072, 196608, 1, 196608, 196609, 1, 65536, 131073, 1, 196608, 196610, 1, 0, 196611, 1, 65536, 262147, 1, 65536, 262146, 1, 196608, 327682, 1, 0, 327681, 1, 0, 262145, 1, 0, 262144, 1, 131072, 327680, 1, 196608, 327683, 1, 65536, 393216, 65537, 0, 393218, 65537, 0, 393219, 65537, 0, 393217, 131073, 0)
 layer_1/name = ""
 layer_1/enabled = true
 layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array()
+layer_1/tile_data = PackedInt32Array(393215, 262145, 262144, 327679, 262145, 262144, 262143, 262145, 262144, 196607, 393217, 65536, 131071, 262145, 262144, 65535, 262145, 262144, 327684, 262145, 0, 262148, 393217, 0, 196612, 262145, 0, 131076, 262145, 0, 65540, 262145, 0, 4, 393217, 0, 393220, 262145, 0, 458752, 327681, 0, 458753, 327681, 0, 458754, 458753, 0, 458755, 327681, 0, 458751, 262145, 262144, 524287, 524289, 0, 458756, 524289, 65536)
 
 [node name="AllyDespawner" type="Area2D" parent="."]
 collision_layer = 0
