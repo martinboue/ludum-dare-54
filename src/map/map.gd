@@ -1,6 +1,7 @@
 class_name Map
 extends Node2D
 
+signal cell_hovered(col, row, friendly)
 signal cell_clicked(col, row, friendly)
 signal defeat()
 
@@ -42,6 +43,7 @@ func _ready() -> void:
 			cell.row = row
 			
 			cell.clicked.connect(_raise_cell_clicked)
+			cell.hovered.connect(_raise_cell_hovered)
 			cell.friendly_changed.connect(_on_cell_friendly_changed)
 			
 			friendly_cells += 1
@@ -61,6 +63,9 @@ func _on_cell_friendly_changed(friendly: bool):
 		
 func _raise_cell_clicked(col, row, friendly) -> void:
 	cell_clicked.emit(col, row, friendly)
+	
+func _raise_cell_hovered(col, row, friendly) -> void:
+	cell_hovered.emit(col, row, friendly)
 	
 func spawn_friendly_unit_at(unit_type: int, col, row) -> void:
 	# Todo handle unit type
