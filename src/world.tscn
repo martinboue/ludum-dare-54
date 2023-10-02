@@ -22,4 +22,5 @@ texture = ExtResource("4_qeu2k")
 [connection signal="cell_clicked" from="Map" to="." method="_on_map_cell_clicked"]
 [connection signal="cell_hovered" from="Map" to="." method="_on_map_cell_hovered"]
 [connection signal="defeat" from="Map" to="HUD" method="_on_map_defeat"]
+[connection signal="defeat" from="HUD" to="Map" method="_on_hud_defeat"]
 [connection signal="unit_selection_changed" from="HUD" to="." method="_on_hud_unit_selection_changed"]

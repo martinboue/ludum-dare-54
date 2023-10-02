@@ -16,6 +16,7 @@ var unit_scenes = [
 	preload("res://src/units/soldier/soldier.tscn"),
 	preload("res://src/units/archer/archer.tscn")
 ]
+var playing = true
 
 @onready var cell_width = tilemap.tile_set.tile_size.x
 @onready var cell_height = tilemap.tile_set.tile_size.y
@@ -68,7 +69,8 @@ func _raise_cell_hovered(col, row, friendly) -> void:
 	cell_hovered.emit(col, row, friendly)
 	
 func spawn_friendly_unit_at(unit_type: int, col, _row) -> void:
-	# Todo handle unit type
+	if not playing:
+		return
 	var unit = unit_scenes[unit_type].instantiate()
 	unit.position.x = col * cell_width + cell_width / 2.0 + tilemap.get_used_rect().position.x * cell_width
 	unit.position.y = (nb_row - 2) * cell_height + cell_height / 2.0
@@ -84,3 +86,6 @@ func _on_enemy_despawner_area_entered(area: Area2D) -> void:
 	if not area is HurtBox:
 		return
 	area.suicide()
+
+func _on_hud_defeat() -> void:
+	playing = false

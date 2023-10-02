@@ -27,5 +27,6 @@ text = "restart"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_q50cl")
+volume_db = 5.0
 
 [connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]

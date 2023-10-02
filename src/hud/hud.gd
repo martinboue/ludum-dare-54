@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 signal unit_selection_changed(selected_unit)
+signal defeat()
 
 var selected_unit = null
 var unit_pickers = []
@@ -27,6 +28,7 @@ func _raise_unit_selection_changed(is_selected, value) -> void:
 
 func _on_map_defeat() -> void:
 	$Defeat.visible = true
+	defeat.emit()
 
 func _on_points_changed(points: int):
 	$Points.text = str(points)
