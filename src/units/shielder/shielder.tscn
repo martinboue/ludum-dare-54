@@ -50,7 +50,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qnasi"]
 size = Vector2(89.5, 81)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ne6f"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wx0oj"]
 resource_local_to_scene = true
 bg_color = Color(0.215686, 0.85098, 0.54902, 1)
 
@@ -59,6 +59,7 @@ script = ExtResource("1_enrpn")
 hurtbox = NodePath("HurtBox")
 enemy_detector = NodePath("Shield/EnemyDetector")
 animation_player = NodePath("AnimationPlayer")
+speed = 50
 
 [node name="Shield" type="Sprite2D" parent="."]
 position = Vector2(1, -56)
@@ -109,4 +110,4 @@ offset_right = 30.0
 offset_bottom = 59.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/fill = SubResource("StyleBoxFlat_4ne6f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wx0oj")

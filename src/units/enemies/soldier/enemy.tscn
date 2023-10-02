@@ -49,7 +49,7 @@ _data = {
 "attack": SubResource("Animation_1lhoo")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xrsxs"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bnbo0"]
 resource_local_to_scene = true
 bg_color = Color(0.215686, 0.85098, 0.54902, 1)
 
@@ -115,4 +115,4 @@ offset_right = 30.0
 offset_bottom = -51.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/fill = SubResource("StyleBoxFlat_xrsxs")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bnbo0")

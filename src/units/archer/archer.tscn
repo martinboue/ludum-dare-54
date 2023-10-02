@@ -13,7 +13,7 @@ size = Vector2(80, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ticjj"]
 size = Vector2(80, 300)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydney"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m71k4"]
 resource_local_to_scene = true
 bg_color = Color(0.215686, 0.85098, 0.54902, 1)
 
@@ -22,6 +22,7 @@ script = ExtResource("1_l4j4e")
 hurtbox = NodePath("HurtBox")
 enemy_detector = NodePath("EnemyDetector")
 animation_player = NodePath("AnimationPlayer")
+speed = 75
 
 [node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 2
@@ -74,7 +75,7 @@ offset_right = 30.0
 offset_bottom = 59.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/fill = SubResource("StyleBoxFlat_ydney")
+theme_override_styles/fill = SubResource("StyleBoxFlat_m71k4")
 
 [connection signal="at_range" from="." to="." method="_on_archer_at_range"]
 [connection signal="not_at_range" from="." to="." method="_on_archer_not_at_range"]
