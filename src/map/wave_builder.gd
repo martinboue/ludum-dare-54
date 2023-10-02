@@ -71,18 +71,19 @@ func _on_wave_timer_timeout():
 	
 	# LevelConfiguration
 	var lc = level_configurations[current_level]
-	var spawner_used = 0
-	self.spawners = self.spawners.filter(func(s): return s.is_active)
-	self.spawners.shuffle()
-	for s in spawners:
-		if spawner_used < lc["spawner_count"]:
-			spawner_used += 1
-			s.spawn_enemies(
-				int(floor(lc["enemy_count"] / lc["spawner_count"])),
-				lc["enemy_types"]
-			)
-		else:
-			break
+	spawners = spawners.filter(func(s): return s.is_active)
+	if spawners.size() == 0:
+		return
+	spawners.shuffle()
+	for i in lc["spawner_count"]:
+		# When multiple spawn in the same
+		if i >= spawners.size():
+			await get_tree().create_timer(1.0).timeout
+		var s = spawners[i % spawners.size()]
+		s.spawn_enemies(
+			int(floor(lc["enemy_count"] / lc["spawner_count"])),
+			lc["enemy_types"]
+		)
 
 func _on_points_changed(points: int) -> void:
 	current_level = int(floor(points / float(points_per_level)))

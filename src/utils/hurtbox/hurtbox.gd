@@ -18,10 +18,7 @@ func is_dead() -> bool:
 	return current_health <= 0
 
 func _on_area_entered(area: Area2D) -> void:
-	if is_dead(): 
-		return
-
-	if not area is HitBox: 
+	if is_dead() or not area is HitBox: 
 		return
 	var hitbox : HitBox = area
 	

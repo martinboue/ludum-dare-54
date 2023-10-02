@@ -14,7 +14,7 @@ size = Vector2(80, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4hxnc"]
 size = Vector2(80, 300)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d3uhn"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tetek"]
 resource_local_to_scene = true
 bg_color = Color(0.215686, 0.85098, 0.54902, 1)
 
@@ -79,7 +79,7 @@ offset_bottom = 59.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.14159
-theme_override_styles/fill = SubResource("StyleBoxFlat_d3uhn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_tetek")
 
 [node name="ShootPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_va1fn")
