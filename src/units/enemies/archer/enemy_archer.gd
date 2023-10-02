@@ -18,4 +18,3 @@ func _on_archer_at_range() -> void:
 func _on_archer_not_at_range() -> void:
 	if not $ShootCooldown.is_stopped():
 		$ShootCooldown.stop()
-	

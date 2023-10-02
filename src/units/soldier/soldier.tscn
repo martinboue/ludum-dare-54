@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bjmp8o8soviwq"]
+[gd_scene load_steps=14 format=3 uid="uid://bjmp8o8soviwq"]
 
 [ext_resource type="Script" path="res://src/units/soldier/soldier.gd" id="1_co3hr"]
 [ext_resource type="Texture2D" uid="uid://xwrvpfwdjfh5" path="res://src/units/allies/green_character.png" id="2_3drj6"]
@@ -48,6 +48,10 @@ tracks/1/keys = {
 _data = {
 "attack": SubResource("Animation_1lhoo")
 }
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qgm8t"]
+resource_local_to_scene = true
+bg_color = Color(0.215686, 0.85098, 0.54902, 1)
 
 [node name="Soldier" type="Node2D" node_paths=PackedStringArray("hurtbox", "enemy_detector", "animation_player")]
 rotation = 3.14159
@@ -113,3 +117,4 @@ offset_bottom = -51.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -3.14159
+theme_override_styles/fill = SubResource("StyleBoxFlat_qgm8t")

@@ -27,8 +27,9 @@ var friendly_cells := 0
 func _ready() -> void:
 	# Generate cells on top of the map
 	for col in nb_col:
+		var cell: Cell = null
 		for row in nb_row:
-			var cell: Cell = cell_scene.instantiate()
+			cell = cell_scene.instantiate()
 			tilemap.add_child(cell)
 			cell.position.x = col * cell_width + cell_width / 2.0
 			cell.position.y = row * cell_height + cell_height / 2.0
@@ -40,12 +41,13 @@ func _ready() -> void:
 			
 			friendly_cells += 1
 			
-	# Generate spawner
-	for col in tilemap.get_used_rect().end.x:
-		var spawner = spawner_scene.instantiate()
+		# Generate col spawner
+		var spawner: Spawner = spawner_scene.instantiate()
 		tilemap.add_child(spawner)
 		spawner.position.x = col * cell_width + cell_width / 2.0
 		spawner.position.y = -cell_height
+		cell.friendly_changed.connect(spawner.on_end_cell_is_claimed)
+		$WaveBuilder.spawners.append(spawner)
 
 func _on_cell_friendly_changed(friendly: bool):
 	friendly_cells += 1 if friendly else -1

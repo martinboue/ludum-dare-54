@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c0vj8vuc83lh7"]
+[gd_scene load_steps=13 format=3 uid="uid://c0vj8vuc83lh7"]
 
 [ext_resource type="Script" path="res://src/units/shielder/shielder.gd" id="1_enrpn"]
 [ext_resource type="Script" path="res://src/utils/hurtbox/hurtbox.gd" id="3_2trqu"]
@@ -49,6 +49,10 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qnasi"]
 size = Vector2(89.5, 81)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ne6f"]
+resource_local_to_scene = true
+bg_color = Color(0.215686, 0.85098, 0.54902, 1)
 
 [node name="Shielder" type="Node2D" node_paths=PackedStringArray("hurtbox", "enemy_detector", "animation_player")]
 script = ExtResource("1_enrpn")
@@ -105,3 +109,4 @@ offset_right = 30.0
 offset_bottom = 59.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_4ne6f")
