@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://5wxrk2uhicqd"]
+[gd_scene load_steps=8 format=3 uid="uid://5wxrk2uhicqd"]
 
 [ext_resource type="Script" path="res://src/hud/hud.gd" id="1_qj2h8"]
 [ext_resource type="PackedScene" uid="uid://d4cr3cqb57b63" path="res://src/hud/unit_picker.tscn" id="1_vqrfc"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dsjolfdih043w" path="res://src/units/shielder/shield_curved.png" id="3_x1hve"]
 [ext_resource type="Texture2D" uid="uid://dvncsglnslsqn" path="res://src/units/soldier/weapon_spear.png" id="4_gygad"]
 [ext_resource type="Texture2D" uid="uid://5ctua252tcvj" path="res://src/units/archer/bow_loaded.png" id="5_hh532"]
+[ext_resource type="FontFile" uid="uid://crd1t04wrdr0h" path="res://src/hud/font.ttf" id="7_fifuk"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_qj2h8")
@@ -63,17 +64,16 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Points" type="Label" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -95.0
-offset_top = 20.0
-offset_right = -55.0
-offset_bottom = 51.0
-grow_horizontal = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 28.0
+offset_right = 20.0
+offset_bottom = 59.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.164706, 0.164706, 0.164706, 1)
+theme_override_fonts/font = ExtResource("7_fifuk")
+theme_override_font_sizes/font_size = 40
 text = "0"
-horizontal_alignment = 2
-
-[connection signal="restart" from="Defeat" to="." method="_on_defeat_restart"]
+horizontal_alignment = 1

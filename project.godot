@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Ludum-dare-54"
-run/main_scene="res://src/world.tscn"
+config/name="Doodle Defenders"
+run/main_scene="res://src/hud/home/home.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://icon.svg"
 

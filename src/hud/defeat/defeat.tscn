@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://hxlj6ss44p5n"]
+[gd_scene load_steps=3 format=3 uid="uid://hxlj6ss44p5n"]
 
 [ext_resource type="Script" path="res://src/hud/defeat/defeat.gd" id="1_rpirh"]
+[ext_resource type="FontFile" uid="uid://crd1t04wrdr0h" path="res://src/hud/font.ttf" id="2_qn2bi"]
 
 [node name="VBoxContainer" type="VBoxContainer"]
 offset_right = 40.0
@@ -9,14 +10,18 @@ script = ExtResource("1_rpirh")
 
 [node name="DefeatLabel" type="Label" parent="."]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.988235, 0.360784, 0.396078, 1)
-theme_override_colors/font_outline_color = Color(0.988235, 1, 1, 1)
-theme_override_constants/outline_size = 20
-theme_override_font_sizes/font_size = 60
-text = "DEFEAT"
+theme_override_colors/font_color = Color(0.164706, 0.164706, 0.164706, 1)
+theme_override_colors/font_outline_color = Color(0.843137, 0, 0, 0.564706)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("2_qn2bi")
+theme_override_font_sizes/font_size = 120
+text = "defeat"
+horizontal_alignment = 1
 
 [node name="RestartButton" type="Button" parent="."]
 layout_mode = 2
-text = "RESTART"
+theme_override_fonts/font = ExtResource("2_qn2bi")
+theme_override_font_sizes/font_size = 25
+text = "restart"
 
 [connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
